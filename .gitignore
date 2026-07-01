@@ -1,0 +1,5 @@
+node_modules/
+.env
+# data/ holds your personal resume.pdf and the generated profile.json — keep both out of git.
+data/
+*.log

@@ -1,0 +1,30 @@
+{
+  "name": "job-search",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Job-search pipeline. Stage 0: builds a reusable data/profile.json from your resume PDF via the Claude API, as a side-effect of running search-job.",
+  "main": "src/searchJob.js",
+  "scripts": {
+    "search": "node src/searchJob.js",
+    "profile:rebuild": "node src/profile/rebuild.js",
+    "source-jobs": "node src/stage2/orchestrator.js",
+    "verify-jobs": "node src/stage3/orchestrator.js",
+    "cron": "node src/stage2/orchestrator.js && node src/stage3/orchestrator.js",
+    "push-notion": "node src/stage4/pushToNotion.js",
+    "seed-jobs": "node src/stage2/seedFromNotion.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.109.0",
+    "@notionhq/client": "^2.3.0",
+    "cheerio": "^1.2.0",
+    "dotenv": "^16.6.1",
+    "exa-js": "^2.15.1",
+    "fuse.js": "^7.4.2",
+    "node-fetch": "^3.3.2",
+    "octokit": "^5.0.5",
+    "openai": "^6.45.0",
+    "pdf-parse": "^2.4.5",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.2"
+  }
+}
