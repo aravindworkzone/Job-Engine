@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
+import { fetchTimeoutMs } from "../../controller/index.js";
 
-const TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS) || 15000;
+const TIMEOUT_MS = fetchTimeoutMs();
 
 // When no ATS is detected, pull the raw text of the career page via Tavily's
 // extract endpoint (handles JS-rendered pages better than a plain fetch).

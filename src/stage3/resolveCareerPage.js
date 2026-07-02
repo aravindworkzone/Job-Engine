@@ -1,13 +1,24 @@
 import fetch from "node-fetch";
 import { detectATS } from "./ats/detectATS.js";
 import { readJSON, writeJSONAtomic, CAREER_PAGES_PATH } from "../lib/jobsStore.js";
+import { fetchTimeoutMs, careerPageNegativeTtlMs } from "../controller/index.js";
 
-const TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS) || 15000;
 const norm = (s) => (s || "").toLowerCase().trim();
 
-// Find a company's careers page and detect its ATS. Results are cached in
-// data/careerPages.json permanently (companies rarely switch ATS), so we only pay
-// for discovery once per company across all runs.
+// Find a company's careers page and detect its ATS. Successful resolutions are
+// cached in data/careerPages.json permanently (companies rarely switch ATS), so
+// we only pay for discovery once per company. FAILED lookups (url:null) expire
+// after the controller's negative TTL so a transient Tavily outage or missing
+// key doesn't permanently mark a company unresolvable.
+
+// A cached entry is usable if it resolved a URL (permanent), or if it's a
+// still-fresh negative entry (don't re-pay for discovery every run).
+export function cacheEntryUsable(entry, now = Date.now()) {
+  if (!entry) return false;
+  if (entry.url) return true;
+  const at = Date.parse(entry.resolvedAt || "");
+  return Number.isFinite(at) && now - at < careerPageNegativeTtlMs();
+}
 
 async function tavilySearch(query) {
   const key = process.env.TAVILY_API_KEY;
@@ -16,7 +27,7 @@ async function tavilySearch(query) {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ api_key: key, query, max_results: 5, search_depth: "basic" }),
-    signal: AbortSignal.timeout(TIMEOUT_MS),
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
   });
   if (!res.ok) throw new Error(`Tavily search HTTP ${res.status}`);
   const data = await res.json();
@@ -38,7 +49,7 @@ async function fetchHtml(url) {
     const res = await fetch(url, {
       headers: { "user-agent": "job-search-pipeline/1.0" },
       redirect: "follow",
-      signal: AbortSignal.timeout(TIMEOUT_MS),
+      signal: AbortSignal.timeout(fetchTimeoutMs()),
     });
     return res.ok ? await res.text() : "";
   } catch {
@@ -50,7 +61,7 @@ async function fetchHtml(url) {
 export async function resolveCareerPage(company) {
   const cache = readJSON(CAREER_PAGES_PATH, {});
   const key = norm(company);
-  if (cache[key]) return cache[key]; // permanent cache hit
+  if (cacheEntryUsable(cache[key])) return cache[key]; // hit (or fresh negative)
 
   let url = null;
   let det = { atsType: null };

@@ -1,10 +1,11 @@
 import { Octokit } from "octokit";
+import { fetchTimeoutMs } from "../controller/index.js";
 
 const DEFAULT_USER = "aravindworkzone";
 // The public events API only covers roughly the last 90 days / 300 events.
 const COMMIT_WINDOW_DAYS = 90;
 // Per-request abort timeout so a stalled connection can't hang the pipeline.
-const TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS) || 15000;
+const TIMEOUT_MS = fetchTimeoutMs();
 const req = () => ({ request: { signal: AbortSignal.timeout(TIMEOUT_MS) } });
 
 function pickRepos(repos) {

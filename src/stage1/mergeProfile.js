@@ -11,8 +11,8 @@ export const ENRICHED_PATH = path.join(DATA_DIR, "enriched.json");
 // validate against EnrichedSchema, and write data/enriched.json.
 // Returns { data, valid }. Partial enrichment is always written — a schema
 // mismatch downgrades to writing the raw merge with a logged warning, so nothing
-// that succeeded is lost.
-export function mergeProfile(profile, { notion, github, portfolio, footprint }, enrichedAt) {
+// that succeeded is lost. `outPath` is injectable for tests.
+export function mergeProfile(profile, { notion, github, portfolio, footprint }, enrichedAt, outPath = ENRICHED_PATH) {
   const merged = {
     ...profile,
     enrichedAt: enrichedAt || new Date().toISOString(),
@@ -33,7 +33,7 @@ export function mergeProfile(profile, { notion, github, portfolio, footprint }, 
     console.warn(`  [merge] schema validation warnings:\n${issues}`);
   }
 
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-  fs.writeFileSync(ENRICHED_PATH, JSON.stringify(toWrite, null, 2) + "\n", "utf8");
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, JSON.stringify(toWrite, null, 2) + "\n", "utf8");
   return { data: toWrite, valid: parsed.success };
 }

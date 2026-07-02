@@ -14,16 +14,24 @@ All stages are **idempotent and cache-on-disk** — delete the output file to fo
 Turns `data/resume.pdf` into a schema-locked `data/profile.json` via a swappable LLM provider (Anthropic Claude or Groq).
 
 ### Stage 1 — Enrich Profile
-Fetches dynamic data Stage 0 excludes: Notion DBs, GitHub activity, portfolio content, and public web footprint. Runs 4 fetchers in parallel — partial success is fine.
+Fetches dynamic data Stage 0 excludes: Notion DBs, GitHub activity, portfolio content, and public web footprint. Runs the fetchers in parallel. The resume profile and the **Notion read are mandatory** (a Notion failure fails the stage); GitHub/portfolio/footprint are **optional** — partial success is fine, and each can be turned off (`STAGE1_GITHUB=off`, `STAGE1_PORTFOLIO=off`, `STAGE1_FOOTPRINT=off`).
 
 ### Stage 2 — Source Jobs
-Searches 7+ job backends (Adzuna, Jooble, Careerjet, JSearch, SerpApi, Apify, TheirStack, Arbeitnow) in parallel. Hard-filters bonds/night-shifts, soft-scores 0-100, deduplicates by hash ID, and appends new entries to `data/jobs.json`.
+Searches 7+ job backends (Adzuna, Jooble, Careerjet, JSearch, SerpApi, Apify, TheirStack, Arbeitnow) in parallel. Hard-filters bonds/night-shifts, soft-scores 0-100, deduplicates by hash ID (company + title — source-independent, so the same role from two aggregators is one entry), and appends new entries to `data/jobs.json`. Query building prefers a fresh `enriched.json` but falls back to a stale one, then to `profile.json`.
 
 ### Stage 3 — Verify Jobs
-Resolves each company's career page, matches listings against stored entries using Greenhouse/Lever APIs or generic fallback (Tavily). Tags as `yes`/`no`/`manual`.
+Resolves each company's career page, matches listings against stored entries using Greenhouse/Lever APIs or generic fallback (Tavily). Tags as `yes`/`no`/`manual`. If the career page **cannot be found**, the entry is **left unverified** (`verified: null`) — never removed, never pushed — and its company is retried after the negative cache expires (7 days); meanwhile it doesn't occupy a slot in the per-run company cap.
 
 ### Stage 4 — Push to Notion
-Pushes verified (`yes`/`manual`) leads to the Notion Job Hunt DB. Manual trigger only — never in cron.
+Pushes verified (`yes`/`manual`) leads to the Notion Job Hunt DB — unverified (`null`) and rejected (`no`) entries are never pushed. Manual trigger only — never in cron.
+
+**Notion touch policy:** the pipeline touches Notion exactly twice — Stage 1 reads (profile enrichment), Stage 4 writes (verified leads). Stages 2–3 (the cron) never talk to Notion; `npm test` enforces this.
+
+**Notion DB policy (`src/controller/notion.controller.js`):** the 🎯 Job Hunt DB is **mandatory** — every stage resolves it through the controller (env override → cached id → spec default → search by name → auto-create under an accessible page; id cached in `data/notionState.json`), and an unresolvable Job Hunt DB is a hard error. It is the **only** Notion DB the pipeline reads or writes (Skill Levels / LinkedIn Posts were removed — not required for the search); any DB registered as `required: false` is optional by contract and can never stop a stage. The auto-create schema is an **exact snapshot of the real DB** (all 13 columns incl. Contact / Next Action / Follow-up Date, plus the full 10-option Status workflow with original colors) — re-snapshot `JOB_HUNT_SCHEMA` in `src/lib/notionJobHunt.js` if you change the DB's columns.
+
+## Control plane
+
+Everything dynamic is centralized in `src/controller/` and env-overridable — locations (`JOB_LOCATIONS`), salary band (`SALARY_BAND_LPA`), country (`JOB_COUNTRY`), reject keywords (`EXTRA_REJECT_KEYWORDS`), freshness windows, per-run caps, TTLs, timeouts, and the fuzzy-match threshold. See `CLAUDE.md` for the full knob list; stages never hardcode policy.
 
 ## Setup
 
@@ -46,6 +54,7 @@ Put your resume at **`data/resume.pdf`**, then configure `.env`.
 | `npm run push-notion` | Stage 4 | Push verified leads to Notion (manual) |
 | `npm run profile:rebuild` | Stage 0 | Force-rebuild profile from resume |
 | `npm run seed-jobs` | — | Import existing Notion rows into `jobs.json` |
+| `npm test` | — | Unit tests + Notion two-touch audit |
 
 ## AI Providers (Stage 0)
 
@@ -71,7 +80,7 @@ Only Claude reads PDFs natively. Groq loses layout and won't work on scanned/ima
 
 ## Verification (Stage 3)
 
-Companies verified against live career pages using Greenhouse public API, Lever public API, or generic HTML extraction via Tavily (fallback). Career pages are cached in `data/careerPages.json`.
+Companies verified against live career pages using Greenhouse public API, Lever public API, or generic HTML extraction via Tavily (fallback). Career pages are cached in `data/careerPages.json` — successful resolutions permanently, failed lookups for 7 days (then retried).
 
 ## Refreshing
 
@@ -87,6 +96,7 @@ rm data/enriched.json       # force Stage 1 (or wait 3 days)
 ```
 src/
   searchJob.js            entry point (Stage 0 → 1)
+  controller/             control plane — all dynamic knobs (Notion policy, search, pipeline)
   lib/                    shared utilities
   llm/                    LLM provider layer
   profile/                Stage 0 — build profile

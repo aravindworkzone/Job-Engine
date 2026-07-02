@@ -1,86 +1,66 @@
-// Hard-reject blocklists (from profile constraints). Scanned against title +
-// company + JD text. These are deal-breakers — a match drops the listing outright.
-const BOND_KEYWORDS = [
-  "bond",
-  "service agreement",
-  "service bond",
-  "training bond",
-  "surety",
-  "minimum service period",
-  "minimum period of service",
-  "penalty if you leave",
-  "lock-in period",
-  "lock in period",
-  "agreement period",
-];
-const SHIFT_KEYWORDS = [
-  "night shift",
-  "night-shift",
-  "rotational shift",
-  "rotating shift",
-  "rotational night",
-  "us shift",
-  "uk shift",
-  "graveyard",
-  "24/7",
-  "24x7",
-  "extended shift",
-  "12 hour shift",
-  "12-hour shift",
-  "shift timing",
-  "shift timings",
-];
+import {
+  getRejectKeywords,
+  getLocationWeights,
+  getSalaryBandLpa,
+  SCORING,
+} from "../controller/index.js";
+
+// Hard-reject and scoring rules. The keyword lists, location weights, salary
+// band, and score weights all come from the search controller
+// (src/controller/search.controller.js) — this file only applies them.
 
 const hay = (job) => `${job.title} ${job.company} ${job.description}`.toLowerCase();
 
 // Returns a reason string if the job must be hard-rejected, else null.
 export function hardRejectReason(job) {
   const h = hay(job);
-  const bond = BOND_KEYWORDS.find((k) => h.includes(k));
-  if (bond) return `bond keyword "${bond}"`;
-  const shift = SHIFT_KEYWORDS.find((k) => h.includes(k));
-  if (shift) return `shift keyword "${shift}"`;
+  const { bond, shift, extra } = getRejectKeywords();
+  const bondHit = bond.find((k) => h.includes(k));
+  if (bondHit) return `bond keyword "${bondHit}"`;
+  const shiftHit = shift.find((k) => h.includes(k));
+  if (shiftHit) return `shift keyword "${shiftHit}"`;
+  const extraHit = extra.find((k) => h.includes(k));
+  if (extraHit) return `custom keyword "${extraHit}"`;
   return null;
 }
-
-// Location priority weights (Chennai > Coimbatore > Bengaluru).
-const LOCATION_WEIGHT = { chennai: 25, coimbatore: 15, bengaluru: 10, bangalore: 10 };
 
 // Soft score 0..100: skill overlap + role-in-title + location priority + salary band.
 export function scoreJob(job, query) {
   const h = hay(job);
   let score = 0;
 
-  // skill overlap → up to 40
+  // skill overlap → up to SCORING.skillsMax
   const skills = (query.skills || []).map((s) => s.toLowerCase()).filter(Boolean);
   if (skills.length) {
     const hits = skills.filter((s) => h.includes(s)).length;
-    score += Math.min(40, Math.round((hits / skills.length) * 40));
+    score += Math.min(SCORING.skillsMax, Math.round((hits / skills.length) * SCORING.skillsMax));
   }
 
-  // role words present in the title → up to 25
+  // role words present in the title → up to SCORING.roleMax
   const roleWords = query.role.toLowerCase().split(/\s+/).filter((w) => w.length > 2);
   if (roleWords.length) {
     const titleLc = job.title.toLowerCase();
     const hits = roleWords.filter((w) => titleLc.includes(w)).length;
-    score += Math.min(25, Math.round((hits / roleWords.length) * 25));
+    score += Math.min(SCORING.roleMax, Math.round((hits / roleWords.length) * SCORING.roleMax));
   }
 
-  // location priority → up to 25 (remote counts if remote is acceptable)
+  // location priority → weights derived from the query's location order
   const loc = job.location.toLowerCase();
   let locPts = 0;
-  for (const [k, v] of Object.entries(LOCATION_WEIGHT)) {
+  for (const [k, v] of Object.entries(getLocationWeights(query.locations))) {
     if (loc.includes(k)) locPts = Math.max(locPts, v);
   }
-  if (!locPts && job.remote && query.remoteOk) locPts = 12;
+  if (!locPts && job.remote && query.remoteOk) locPts = SCORING.remotePts;
   score += locPts;
 
-  // salary band → +15 for 4.5L+, +8 for 4–4.5L, −10 below 4L (only when disclosed)
+  // salary vs. the configured band (only when disclosed): band[0]+0.5 LPA and
+  // above earns the full bonus, at least band[0] a partial one, below a penalty.
   if (job.salaryMin) {
+    const [okLpa] = query.salaryBandLpa || getSalaryBandLpa();
     const lpa = job.salaryMin / 100000;
-    if (lpa >= 4.5) score += 15;
-    else if (lpa >= 4) score += 8;
-    else score -= 10;
+    if (lpa >= okLpa + 0.5) score += SCORING.salary.bonusGood;
+    else if (lpa >= okLpa) score += SCORING.salary.bonusOk;
+    else score -= SCORING.salary.penaltyBelow;
   }
 
   return Math.max(0, Math.min(100, Math.round(score)));

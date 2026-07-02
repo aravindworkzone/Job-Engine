@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
+import { fetchTimeoutMs } from "../controller/index.js";
 
 const DEFAULT_URL = "https://aravind-mern.vercel.app";
-const TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS) || 15000;
+const TIMEOUT_MS = fetchTimeoutMs();
 
 // Lowercase corpus of everything already in profile.json, so we can drop
 // portfolio text that merely repeats the resume.

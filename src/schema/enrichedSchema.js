@@ -10,10 +10,10 @@ import { ProfileSchema } from "../profile/schema.js";
 // so values are permissive.
 const NotionRecord = z.record(z.string(), z.any());
 
+// Only the Job Hunt DB is read (Skill Levels / LinkedIn Posts removed
+// 2026-07-02 — not required for the search).
 const NotionData = z
   .object({
-    skillLevels: z.array(NotionRecord),
-    linkedinPosts: z.array(NotionRecord),
     jobHunt: z.array(NotionRecord),
   })
   .nullable();

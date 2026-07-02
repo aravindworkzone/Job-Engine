@@ -33,14 +33,30 @@ jobs:
 
       - run: npm ci
 
-      # NOTE: Stage 2 requires a fresh data/enriched.json (< 3 days) from Stage 1.
-      # On CI you must either commit enriched.json, restore it from cache/artifact,
-      # or generate it here by adding a Stage 1 step with LLM + Notion API keys.
-      # Without enriched.json, Stage 2 exits early with "enriched.json not found".
+      # Stage 2 builds its query from data/enriched.json, falling back to
+      # data/profile.json. data/ is gitignored (personal data), so provide the
+      # profile via the PROFILE_JSON_B64 secret: locally run
+      #   base64 -w0 data/profile.json   (macOS: base64 -i data/profile.json)
+      # and store the output as a repo secret. The cache-restored copy (if any)
+      # is left untouched when the secret is unset.
+      - name: Materialize profile.json from secret
+        env:
+          PROFILE_JSON_B64: ${{ secrets.PROFILE_JSON_B64 }}
+        run: |
+          if [ -n "$PROFILE_JSON_B64" ]; then
+            mkdir -p data
+            echo "$PROFILE_JSON_B64" | base64 -d > data/profile.json
+            echo "data/profile.json materialized from secret"
+          elif [ -f data/profile.json ]; then
+            echo "using cache-restored data/profile.json"
+          else
+            echo "::warning::no profile.json available — Stage 2 will fail; set the PROFILE_JSON_B64 secret"
+          fi
+
+      # No NOTION_TOKEN here — by design, the cron (Stages 2–3) never touches
+      # Notion. Notion is read once in Stage 1 and written once in Stage 4 (manual).
       - name: Stage 2 → Stage 3
         env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_JOBHUNT_DB: ${{ secrets.NOTION_JOBHUNT_DB }}
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}

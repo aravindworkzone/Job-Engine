@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { Client } from "@notionhq/client";
 import { readJobs, writeJobs, hashId } from "../lib/jobsStore.js";
+import { resolveNotionDb } from "../controller/index.js";
 
 // ONE-TIME seed. Reads the current Job Hunt DB and records each existing row in
 // data/jobs.json as an already-handled entry (pushedToNotion:true, verified:"manual"),
@@ -10,14 +11,10 @@ import { readJobs, writeJobs, hashId } from "../lib/jobsStore.js";
 // Reconciliation: spec'd as "via Notion MCP", but a standalone node run can't call
 // this Claude session's MCP tools, so this uses @notionhq/client (same as Stage 1).
 //
-// ⚠️ Dedup caveat: job id = hash(company + title + source). Existing Notion rows
-// have no source-name, so they're seeded with source "notion-seed" and their id
-// therefore won't collide with the same job freshly sourced from e.g. adzuna.
-// Seeding makes the rows inert (pushed+verified), but does NOT by itself stop a
-// future adzuna hit for the same role from being added. If you want the seed to
-// block re-sourcing regardless of source, drop `source` from hashId().
-
-const DB_ID = process.env.NOTION_JOBHUNT_DB || "6e50df73695b4c94a101eb95fa3f8a50";
+// Dedup: job id = hash(company + title), source-independent. Seeded rows carry
+// source "notion-seed" for provenance only — the same role freshly sourced from
+// e.g. adzuna hashes to the SAME id, so seeding fully blocks re-sourcing,
+// re-verifying, and re-pushing of anything already in the Notion DB.
 
 function readText(prop) {
   if (!prop) return "";
@@ -31,6 +28,7 @@ const readNumber = (prop) => (prop?.type === "number" ? prop.number : null);
 async function main() {
   if (!process.env.NOTION_TOKEN) throw new Error("NOTION_TOKEN not set.");
   const notion = new Client({ auth: process.env.NOTION_TOKEN });
+  const DB_ID = await resolveNotionDb(notion, "jobHunt"); // mandatory — throws if unresolvable
 
   const rows = [];
   let cursor;
@@ -46,6 +44,7 @@ async function main() {
         company: readText(p.Company),
         title: readText(p.Role),
         url: readText(p.Source),
+        location: readText(p.Location) || "",
         salary: readText(p.Salary) || null,
         score: readNumber(p.Score) ?? 0,
       });
@@ -60,7 +59,7 @@ async function main() {
   let added = 0;
 
   for (const r of rows) {
-    const id = hashId(r.company, r.title, "notion-seed");
+    const id = hashId(r.company, r.title);
     if (existingIds.has(id)) continue;
     existingIds.add(id);
     seeded.push({
@@ -69,6 +68,8 @@ async function main() {
       company: r.company,
       url: r.url || "",
       source: "notion-seed",
+      location: r.location,
+      postedAt: null,
       score: r.score,
       salary: r.salary,
       growth: null,

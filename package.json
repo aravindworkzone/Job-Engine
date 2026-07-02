@@ -11,7 +11,8 @@
     "verify-jobs": "node src/stage3/orchestrator.js",
     "cron": "node src/stage2/orchestrator.js && node src/stage3/orchestrator.js",
     "push-notion": "node src/stage4/pushToNotion.js",
-    "seed-jobs": "node src/stage2/seedFromNotion.js"
+    "seed-jobs": "node src/stage2/seedFromNotion.js",
+    "test": "node --test --test-isolation=none"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.0",

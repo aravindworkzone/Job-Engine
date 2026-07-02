@@ -7,18 +7,15 @@ import "dotenv/config";
 //
 //   node src/stage2/sources/_validate.js adzuna
 //   node src/stage2/sources/_validate.js serpapi
-const SAMPLE = {
-  role: "MERN Stack Developer",
-  roles: ["MERN Stack Developer", "Full Stack Developer"],
-  keywords: "MERN Stack Developer",
+import { buildQuery } from "../buildQuery.js";
+
+// Built through buildQuery so the sample follows the controller config
+// (JOB_LOCATIONS, SALARY_BAND_LPA, JOB_COUNTRY) exactly like a real run.
+const SAMPLE = buildQuery({
+  basics: { headline: "MERN Stack Developer" },
   skills: ["react", "node", "mongodb", "express", "javascript"],
-  locations: ["Chennai", "Coimbatore", "Bengaluru"],
-  primaryLocation: "Chennai",
-  remoteOk: false,
-  country: "in",
-  countryCode: "IN",
-  salaryBandLpa: [4, 6],
-};
+  targetRoles: ["MERN Stack Developer", "Full Stack Developer"],
+});
 
 const REGISTRY = {
   adzuna: () => import("./adzuna.js").then((m) => m.fetchAdzuna),
