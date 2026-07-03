@@ -23,9 +23,9 @@ Searches 7+ job backends (Adzuna, Jooble, Careerjet, JSearch, SerpApi, Apify, Th
 Resolves each company's career page, matches listings against stored entries using Greenhouse/Lever APIs or generic fallback (Tavily). Tags as `yes`/`no`/`manual`. If the career page **cannot be found**, the entry is **left unverified** (`verified: null`) — never removed, never pushed — and its company is retried after the negative cache expires (7 days); meanwhile it doesn't occupy a slot in the per-run company cap.
 
 ### Stage 4 — Push to Notion
-Pushes verified (`yes`/`manual`) leads to the Notion Job Hunt DB — unverified (`null`) and rejected (`no`) entries are never pushed. Manual trigger only — never in cron.
+Pushes verified (`yes`/`manual`) leads to the Notion Job Hunt DB — unverified (`null`) and rejected (`no`) entries are never pushed. Runs at the end of the CI pipeline and via `npm run push-notion`.
 
-**Notion touch policy:** the pipeline touches Notion exactly twice — Stage 1 reads (profile enrichment), Stage 4 writes (verified leads). Stages 2–3 (the cron) never talk to Notion; `npm test` enforces this.
+**Notion touch policy:** the pipeline touches Notion exactly twice per run — Stage 1 reads (profile enrichment), Stage 4 writes (verified leads). Stages 2–3 never talk to Notion; `npm test` enforces this.
 
 **Notion DB policy (`src/controller/notion.controller.js`):** the 🎯 Job Hunt DB is **mandatory** — every stage resolves it through the controller (env override → cached id → spec default → search by name → auto-create under an accessible page; id cached in `data/notionState.json`), and an unresolvable Job Hunt DB is a hard error. It is the **only** Notion DB the pipeline reads or writes (Skill Levels / LinkedIn Posts were removed — not required for the search); any DB registered as `required: false` is optional by contract and can never stop a stage. The auto-create schema is an **exact snapshot of the real DB** (all 13 columns incl. Contact / Next Action / Follow-up Date, plus the full 10-option Status workflow with original colors) — re-snapshot `JOB_HUNT_SCHEMA` in `src/lib/notionJobHunt.js` if you change the DB's columns.
 
@@ -51,7 +51,7 @@ Put your resume at **`data/resume.pdf`**, then configure `.env`.
 | `npm run source-jobs` | Stage 2 | Source jobs into `jobs.json` |
 | `npm run verify-jobs` | Stage 3 | Verify unverified entries |
 | `npm run cron` | Stage 2 → 3 | Chained for CI/CD |
-| `npm run push-notion` | Stage 4 | Push verified leads to Notion (manual) |
+| `npm run push-notion` | Stage 4 | Push verified leads to Notion |
 | `npm run profile:rebuild` | Stage 0 | Force-rebuild profile from resume |
 | `npm run seed-jobs` | — | Import existing Notion rows into `jobs.json` |
 | `npm test` | — | Unit tests + Notion two-touch audit |
