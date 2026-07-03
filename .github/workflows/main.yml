@@ -28,6 +28,10 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+    # Secrets live in the "Job Engine" environment (Settings → Environments) —
+    # the job must declare it or those secrets stay invisible. Keep the
+    # environment free of protection rules, or scheduled runs stall on approval.
+    environment: Job Engine
     timeout-minutes: 30 # a hung API call must not burn hours of runner time
     permissions:
       contents: write # commit jobs.json/careerPages.json/runs.log back after the run
