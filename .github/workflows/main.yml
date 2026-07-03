@@ -67,7 +67,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24" # runner is deprecating Node 20
           cache: "npm"
 
       # jobs.json / careerPages.json / runs.log persist via the commit-back step
