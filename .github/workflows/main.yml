@@ -2,18 +2,33 @@ name: Full Pipeline (Stage 0 → 4)
 
 # 3x/week, 04:00 UTC = 09:30 IST (Mon/Wed/Fri). Runs the WHOLE pipeline:
 #   Stage 0→1 (npm run search)      profile + enrichment (Notion read)
-#   Stage 2→3 (npm run cron)        source + verify (no Notion)
+#   Stage 2   (npm run source-jobs) source jobs (no Notion)
+#   Stage 3   (npm run verify-jobs) verify against career pages (no Notion)
 #   Stage 4   (npm run push-notion) push verified leads (Notion write)
 # The Notion two-touch policy still holds per run (Stage 1 reads, Stage 4
 # writes, stages 2–3 never touch it) — Stage 4 is just no longer manual-only.
+#
+# SELF-HEALING CONTRACT: every stage is cache-on-disk and rebuilds its own
+# state. Each stage step is continue-on-error, so one broken stage never
+# blocks the rest — Stage 2 falls back to profile.json when enrichment fails,
+# Stage 3 verifies the existing backlog when sourcing fails, Stage 4 pushes
+# already-verified leads when verification fails. Corrupt state files are
+# deleted up front (stages rebuild them). The summary step marks the run red
+# if any stage failed, so failures stay visible without stopping automation.
 on:
   schedule:
     - cron: "0 4 * * 1,3,5"
   workflow_dispatch:
 
+# Never let two runs race on the state commit-back.
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 30 # a hung API call must not burn hours of runner time
     permissions:
       contents: write # commit jobs.json/careerPages.json/runs.log back after the run
     env:
@@ -27,7 +42,7 @@ jobs:
       LLM_PROVIDER: groq
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       # Stage 1 enrichment. The Notion read is MANDATORY — without NOTION_TOKEN
-      # the search step fails. GitHub/portfolio/footprint are optional; the
+      # the search step fails (and Stage 2 falls back to profile.json). The
       # built-in Actions token is enough for public GitHub reads.
       NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
       NOTION_JOBHUNT_DB: ${{ secrets.NOTION_JOBHUNT_DB }}
@@ -69,12 +84,35 @@ jobs:
 
       - run: npm ci
 
+      # SELF-HEAL: a corrupt state file or a stale lock left by a crashed run
+      # must never poison this run. Unparseable data/*.json files are deleted —
+      # every stage rebuilds its own state from scratch (that's the contract).
+      - name: Heal state (drop corrupt files + stale locks)
+        run: |
+          rm -rf data/jobs.json.lock
+          node -e '
+            const fs = require("fs");
+            if (!fs.existsSync("data")) process.exit(0);
+            for (const f of fs.readdirSync("data")) {
+              if (!f.endsWith(".json")) continue;
+              const p = "data/" + f;
+              try { JSON.parse(fs.readFileSync(p, "utf8")); }
+              catch {
+                console.log("::warning::" + p + " was corrupt — deleted; the pipeline rebuilds it");
+                fs.rmSync(p, { force: true });
+              }
+            }
+            console.log("state files healthy");
+          '
+
       # Stage 0 needs data/resume.pdf, which is NOT in the repo (personal data).
       # Provide the finished profile via the PROFILE_JSON_B64 secret instead:
       # locally run
       #   base64 -w0 data/profile.json   (macOS: base64 -i data/profile.json)
       # and store the output as a repo secret. With profile.json present,
       # Stage 0 is skipped (cache-on-disk) and Stage 1 runs directly.
+      # The decoded secret is JSON-validated — a bad secret is the one failure
+      # the pipeline cannot heal on its own, so it fails loud and early.
       - name: Materialize profile.json from secret
         env:
           PROFILE_JSON_B64: ${{ secrets.PROFILE_JSON_B64 }}
@@ -82,6 +120,8 @@ jobs:
           if [ -n "$PROFILE_JSON_B64" ]; then
             mkdir -p data
             echo "$PROFILE_JSON_B64" | base64 -d > data/profile.json
+            node -e 'JSON.parse(require("fs").readFileSync("data/profile.json","utf8"))' \
+              || { echo "::error::PROFILE_JSON_B64 secret does not decode to valid JSON — re-create it"; exit 1; }
             echo "data/profile.json materialized from secret"
           elif [ -f data/profile.json ]; then
             echo "using cache-restored data/profile.json"
@@ -90,19 +130,48 @@ jobs:
             exit 1
           fi
 
+      # Each stage is continue-on-error: a failure is recorded (see summary)
+      # but never blocks the later stages, which run on whatever state exists.
       - name: Stage 0 → 1 (profile + enrich)
+        id: stage1
+        continue-on-error: true
         run: npm run search
 
-      - name: Stage 2 → 3 (source + verify)
-        run: npm run cron
+      - name: Stage 2 (source jobs)
+        id: stage2
+        continue-on-error: true
+        run: npm run source-jobs
+
+      - name: Stage 3 (verify jobs)
+        id: stage3
+        continue-on-error: true
+        run: npm run verify-jobs
 
       - name: Stage 4 (push verified leads to Notion)
+        id: stage4
+        continue-on-error: true
         run: npm run push-notion
+
+      # Stage loggers write append-only ./<stage>.log files, not stdout — dump
+      # every log into the console so the full trail lives in the Actions run.
+      - name: Show all pipeline logs
+        if: always()
+        run: |
+          found=0
+          for f in *.log; do
+            [ -f "$f" ] || continue
+            found=1
+            echo "::group::$f"
+            cat "$f"
+            echo "::endgroup::"
+          done
+          [ "$found" = 1 ] || echo "no .log files were written this run"
 
       # Guaranteed cross-run persistence: commit sourcing/verification state and
       # the append-only run history back. Only these files — profile.json and
       # enriched.json are personal data and never leave the runner. [skip ci]
-      # avoids retriggers; if: always() so a failed stage still saves progress.
+      # avoids retriggers. A failed push is a warning, not a failure: the next
+      # run rebuilds whatever wasn't persisted (self-heal contract).
       - name: Persist pipeline state
         if: always()
         run: |
@@ -113,8 +182,36 @@ jobs:
           done
           if git diff --cached --quiet; then
             echo "no state changes to persist"
-          else
-            git commit -m "chore: persist pipeline state [skip ci]"
-            git pull --rebase origin ${{ github.ref_name }}
-            git push
+            exit 0
           fi
+          git commit -m "chore: persist pipeline state [skip ci]"
+          if ! git pull --rebase origin ${{ github.ref_name }}; then
+            git rebase --abort || true
+            echo "::warning::could not rebase onto ${{ github.ref_name }} — state not persisted this run; the next run rebuilds it"
+            exit 0
+          fi
+          git push || echo "::warning::push failed — state not persisted this run; the next run rebuilds it"
+
+      # Honest reporting: the run went as far as it could, but if any stage
+      # failed the run is marked red so the failure is impossible to miss.
+      - name: Run summary
+        if: always()
+        env:
+          S1: ${{ steps.stage1.outcome }}
+          S2: ${{ steps.stage2.outcome }}
+          S3: ${{ steps.stage3.outcome }}
+          S4: ${{ steps.stage4.outcome }}
+        run: |
+          ok=1
+          report() {
+            if [ "$2" = "success" ]; then echo "✅ $1"; else ok=0; echo "❌ $1 ($2)"; fi
+          }
+          report "Stage 0→1 profile + enrich" "$S1"
+          report "Stage 2   source jobs"      "$S2"
+          report "Stage 3   verify jobs"      "$S3"
+          report "Stage 4   push to Notion"   "$S4"
+          if [ "$ok" = 0 ]; then
+            echo "::error::one or more stages failed — later stages still ran on existing state and progress was persisted; see the stage logs above"
+            exit 1
+          fi
+          echo "all stages green"
