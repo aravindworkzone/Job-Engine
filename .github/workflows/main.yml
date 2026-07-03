@@ -11,6 +11,8 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit jobs.json/careerPages.json state back after the run
     steps:
       - uses: actions/checkout@v4
 
@@ -20,9 +22,9 @@ jobs:
           cache: "npm"
 
       # data/ is ephemeral on CI. jobs.json + careerPages.json are the source of
-      # truth and MUST persist across runs, or dedup/verify state resets every time.
-      # This cache is best-effort; for guaranteed persistence, commit these two
-      # files back to the repo at the end of the run instead (see commented step).
+      # truth and MUST persist across runs, or dedup/verify state resets every
+      # time. The cache is a best-effort speedup; the "Persist state" step at the
+      # end commits the two files back to the repo for guaranteed persistence.
       - name: Restore jobs.json state
         uses: actions/cache@v4
         with:
@@ -70,11 +72,19 @@ jobs:
           TZ: Asia/Kolkata
         run: npm run cron
 
-      # For reliable cross-run persistence, uncomment to commit state back:
-      # - name: Persist jobs.json
-      #   run: |
-      #     git config user.name "github-actions"
-      #     git config user.email "actions@github.com"
-      #     git add -f data/jobs.json data/careerPages.json
-      #     git commit -m "chore: update jobs.json [skip ci]" || echo "no changes"
-      #     git push
+      # Guaranteed cross-run persistence: commit sourcing/verification state back.
+      # Only these two files — data/ stays gitignored (profile/enriched are
+      # personal data and never leave the runner). [skip ci] avoids retriggers.
+      - name: Persist jobs.json state
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f data/jobs.json data/careerPages.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no state changes to persist"
+          else
+            git commit -m "chore: persist jobs/careerPages state [skip ci]"
+            git pull --rebase origin ${{ github.ref_name }}
+            git push
+          fi

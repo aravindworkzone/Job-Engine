@@ -34,12 +34,23 @@ async function tavilySearch(query) {
   return (data.results || []).map((r) => r.url).filter(Boolean);
 }
 
-// Prefer a known ATS URL, then a careers/jobs page, else the first result.
-function pickCareersUrl(urls) {
+// Aggregator/job-board domains are last-resort picks: LinkedIn blocks bots
+// (extract comes back empty → guaranteed "manual"), and a generic board result
+// can belong to a different company entirely — the company's own page is the
+// only URL the ATS detector or title match can trust.
+const AGGREGATOR =
+  /linkedin\.com|naukri\.com|indeed\.|ziprecruiter\.com|glassdoor\.|instahyre\.com|monster(?:india)?\.com|foundit\.in|shine\.com|timesjobs\.com|simplyhired\.com|wellfound\.com|cutshort\.io|hirist\.(?:com|tech)|irishjobs\.ie|jooble\.org|adzuna\./i;
+
+// Prefer a known ATS URL, then a non-aggregator careers/jobs page, then any
+// non-aggregator result, then an aggregator careers page — never a bare
+// aggregator result (that's how "Plantz" resolved to another company's board).
+export function pickCareersUrl(urls) {
+  const careersish = (u) => /career|careers|jobs|join-us|work-with-us/i.test(u);
   return (
     urls.find((u) => /greenhouse\.io|jobs\.lever\.co/i.test(u)) ||
-    urls.find((u) => /career|careers|jobs|join-us|work-with-us/i.test(u)) ||
-    urls[0] ||
+    urls.find((u) => careersish(u) && !AGGREGATOR.test(u)) ||
+    urls.find((u) => !AGGREGATOR.test(u)) ||
+    urls.find(careersish) ||
     null
   );
 }

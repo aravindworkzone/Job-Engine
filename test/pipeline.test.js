@@ -8,7 +8,7 @@ import { hashId, toJobEntry } from "../src/lib/jobsStore.js";
 import { selectNewJobs } from "../src/stage2/dedupeAgainstNotion.js";
 import { entryToProperties } from "../src/stage2/writeToNotion.js";
 import { isPushable } from "../src/stage4/pushToNotion.js";
-import { cacheEntryUsable } from "../src/stage3/resolveCareerPage.js";
+import { cacheEntryUsable, pickCareersUrl } from "../src/stage3/resolveCareerPage.js";
 import { normalizeJob } from "../src/stage2/sources/_shared.js";
 import { filterAndScore } from "../src/stage2/filterAndScore.js";
 import { buildQuery } from "../src/stage2/buildQuery.js";
@@ -106,6 +106,35 @@ test("cacheEntryUsable: resolved pages are permanent, failed lookups expire", ()
   assert.equal(cacheEntryUsable(staleMiss, now), false, "stale miss: retry discovery");
   assert.equal(cacheEntryUsable(undefined, now), false);
   assert.equal(cacheEntryUsable({ url: null }, now), false, "no timestamp = retry");
+});
+
+test("pickCareersUrl: ATS URL beats everything, aggregators are last resort", () => {
+  assert.equal(
+    pickCareersUrl(["https://linkedin.com/jobs/acme", "https://boards.greenhouse.io/acme"]),
+    "https://boards.greenhouse.io/acme",
+    "known ATS wins even when listed after an aggregator"
+  );
+  assert.equal(
+    pickCareersUrl(["https://www.naukri.com/acme-jobs", "https://acme.example/careers"]),
+    "https://acme.example/careers",
+    "own careers page beats an aggregator careers page"
+  );
+  assert.equal(
+    pickCareersUrl(["https://linkedin.com/jobs/acme", "https://acme.example/about"]),
+    "https://acme.example/about",
+    "any non-aggregator URL beats an aggregator"
+  );
+  assert.equal(
+    pickCareersUrl(["https://www.naukri.com/acme-jobs-123"]),
+    "https://www.naukri.com/acme-jobs-123",
+    "aggregator careers page is an acceptable last resort"
+  );
+  assert.equal(
+    pickCareersUrl(["https://www.ziprecruiter.com/co/some-other-company"]),
+    null,
+    "a bare aggregator result is worse than no URL (wrong-company risk)"
+  );
+  assert.equal(pickCareersUrl([]), null);
 });
 
 // ---- Stage 2 query + scoring stay consistent with the profile contract -------
