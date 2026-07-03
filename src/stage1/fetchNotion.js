@@ -1,15 +1,12 @@
 import { Client } from "@notionhq/client";
+import { resolveNotionDb } from "../controller/index.js";
 
-// DB IDs discovered from the workspace; override via env if they ever change.
-const DB = {
-  skillLevels: process.env.NOTION_DB_SKILL_LEVELS ?? null,
-  linkedinPosts: process.env.NOTION_DB_LINKEDIN_POSTS ?? null,
-  jobHunt: process.env.NOTION_DB_JOB_HUNT ?? null,
-};
+// Which DBs exist, which are mandatory, and their ids all live in
+// src/controller/notion.controller.js — this fetcher only executes that policy.
 
 // Map any Notion property to a plain JS value — so callers get structured data,
-// not raw Notion blocks.
-function readProperty(prop) {
+// not raw Notion blocks. Exported for tests.
+export function readProperty(prop) {
   switch (prop?.type) {
     case "title":
     case "rich_text":
@@ -51,7 +48,7 @@ function readProperty(prop) {
   }
 }
 
-function flatten(page) {
+export function flatten(page) {
   const out = {};
   for (const [key, prop] of Object.entries(page.properties || {})) {
     out[key] = readProperty(prop);
@@ -75,28 +72,20 @@ async function queryAll(notion, databaseId) {
 }
 
 // Query one DB; on failure log and return [] so one bad DB doesn't sink the others.
-async function safeQuery(notion, id, label) {
-  try {
-    return await queryAll(notion, id);
-  } catch (err) {
-    console.warn(`  [notion] failed to read ${label}: ${err.message}`);
-    return [];
-  }
-}
-
-// Returns { skillLevels, linkedinPosts, jobHunt } or null on total failure.
+// A missing id is not an error — the DB just isn't configured for this workspace.
+// Returns { jobHunt } or null on failure. The Job Hunt DB is the only Notion
+// read left in the pipeline (Skill Levels / LinkedIn Posts removed 2026-07-02 —
+// not required for the search), and it is MANDATORY: resolution or read failure
+// fails this whole fetcher, which fails Stage 1.
 export async function fetchNotion() {
   try {
     if (!process.env.NOTION_TOKEN) throw new Error("NOTION_TOKEN not set");
     const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
-    const [skillLevels, linkedinPosts, jobHunt] = await Promise.all([
-      safeQuery(notion, DB.skillLevels, "Skill Levels"),
-      safeQuery(notion, DB.linkedinPosts, "LinkedIn Posts"),
-      safeQuery(notion, DB.jobHunt, "Job Hunt"),
-    ]);
+    const jobHuntId = await resolveNotionDb(notion, "jobHunt"); // throws if unresolvable
+    const jobHunt = await queryAll(notion, jobHuntId); // mandatory — errors propagate
 
-    return { skillLevels, linkedinPosts, jobHunt };
+    return { jobHunt };
   } catch (err) {
     console.warn(`  [notion] ${err.message}`);
     return null;

@@ -9,14 +9,18 @@ export async function fetchJSearch(query) {
     console.warn("  [jsearch] skipped: JSEARCH_RAPIDAPI_KEY not set");
     return [];
   }
-  const q = `${query.keywords} in ${query.primaryLocation}, India`;
+  const q = `${query.keywords} in ${query.primaryLocation}, ${query.countryName || "India"}`;
+  // /search was removed by the API (404 "Endpoint '/search' does not exist");
+  // /search-v2 is the current endpoint (cursor-paginated — we take page one).
   const url =
-    `https://jsearch.p.rapidapi.com/search?query=${enc(q)}` +
-    `&page=1&num_pages=1&country=in&date_posted=month`;
+    `https://jsearch.p.rapidapi.com/search-v2?query=${enc(q)}` +
+    `&country=${enc(query.country || "in")}&date_posted=month`;
   const data = await httpJSON(url, {
     headers: { "x-rapidapi-key": key, "x-rapidapi-host": "jsearch.p.rapidapi.com" },
   });
-  return (data.data || []).map((j) =>
+  // v2 wraps results as data.jobs on some plans and a bare array on others.
+  const rows = Array.isArray(data.data) ? data.data : data.data?.jobs || [];
+  return rows.map((j) =>
     normalizeJob("jsearch", {
       title: j.job_title,
       company: j.employer_name,

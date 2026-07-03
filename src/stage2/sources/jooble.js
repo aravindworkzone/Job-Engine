@@ -9,10 +9,13 @@ export async function fetchJooble(query) {
     return [];
   }
   return collectLocations(query.locations, async (loc) => {
+    // Jooble only resolves the location when the country name is included:
+    // "Chennai" alone matches nothing, "Chennai, India" works (verified live).
+    const location = query.countryName ? `${loc}, ${query.countryName}` : loc;
     const data = await httpJSON(`https://jooble.org/api/${key}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ keywords: query.keywords, location: loc }),
+      body: JSON.stringify({ keywords: query.keywords, location }),
     });
     return (data.jobs || []).map((j) =>
       normalizeJob("jooble", {

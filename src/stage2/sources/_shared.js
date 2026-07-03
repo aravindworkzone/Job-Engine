@@ -1,7 +1,9 @@
 import fetch from "node-fetch";
+import { fetchTimeoutMs } from "../../controller/index.js";
 
-// Per-request abort timeout so a stalled source can't hang the run (shared with Stage 1).
-export const TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS) || 15000;
+// Per-request abort timeout so a stalled source can't hang the run (shared with
+// Stage 1). Sourced from the pipeline controller (FETCH_TIMEOUT_MS).
+export const TIMEOUT_MS = fetchTimeoutMs();
 export const enc = encodeURIComponent;
 
 const fmt = (n) => (n >= 100000 ? `₹${(n / 100000).toFixed(1)}L` : `₹${Math.round(n)}`);
@@ -31,12 +33,12 @@ export function normalizeJob(source, j) {
   };
 }
 
-export async function httpJSON(url, { method = "GET", headers = {}, body } = {}) {
+export async function httpJSON(url, { method = "GET", headers = {}, body, timeoutMs } = {}) {
   const res = await fetch(url, {
     method,
     headers: { accept: "application/json", ...headers },
     body,
-    signal: AbortSignal.timeout(TIMEOUT_MS),
+    signal: AbortSignal.timeout(timeoutMs || TIMEOUT_MS),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
   return res.json();

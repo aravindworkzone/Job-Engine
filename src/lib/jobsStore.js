@@ -9,26 +9,30 @@ const DATA_DIR = path.resolve(__dirname, "../../data");
 export const JOBS_PATH = path.join(DATA_DIR, "jobs.json");
 export const CAREER_PAGES_PATH = path.join(DATA_DIR, "careerPages.json");
 
-// Stable job identity. Per spec: sha256 of company + title + source, each
-// lowercased + trimmed before hashing. This SAME function must be used by every
-// stage (sourcing, seed, dedupe) or ids won't line up. A separator prevents
+// Stable job identity: sha256 of company + title, each lowercased + trimmed
+// before hashing. `source` is deliberately NOT part of the identity — the same
+// role at the same company arriving from two aggregators (or from the Notion
+// seed) is ONE job, not two. This SAME function must be used by every stage
+// (sourcing, seed, dedupe) or ids won't line up. A separator prevents
 // ("ab","c") colliding with ("a","bc").
-export function hashId(company, title, source) {
+export function hashId(company, title) {
   const norm = (s) => String(s ?? "").trim().toLowerCase();
   return crypto
     .createHash("sha256")
-    .update([norm(company), norm(title), norm(source)].join("|"))
+    .update([norm(company), norm(title)].join("|"))
     .digest("hex");
 }
 
 // Map a normalized source job (from Stage 2 fetchers) → a data/jobs.json entry.
 export function toJobEntry(job, sourcedAt) {
   return {
-    id: hashId(job.company, job.title, job.source),
+    id: hashId(job.company, job.title),
     title: job.title,
     company: job.company,
     url: job.url || "",
     source: job.source,
+    location: job.location || "",
+    postedAt: job.postedAt || null,
     score: job.score ?? 0,
     salary: job.salaryText || null,
     growth: null, // reserved for a future company-growth signal
@@ -50,12 +54,32 @@ export function readJSON(file, fallback) {
 }
 
 // Write via temp-file + rename so a crash can never leave a half-written file.
-// libuv's rename overwrites the destination atomically on both POSIX and Windows.
-export function writeJSONAtomic(file, data) {
+// On Windows, rename-over-existing can transiently fail with EPERM/EACCES/EBUSY
+// while antivirus or the search indexer briefly holds the destination open, so
+// the rename is retried with backoff; each attempt is still atomic.
+const sleepSync = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+
+export function writeJSONAtomic(file, data, { retries = 10 } = {}) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   const tmp = `${file}.tmp-${process.pid}-${Date.now()}`;
   fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + "\n", "utf8");
-  fs.renameSync(tmp, file);
+  for (let i = 0; ; i++) {
+    try {
+      fs.renameSync(tmp, file);
+      return;
+    } catch (e) {
+      const transient = e.code === "EPERM" || e.code === "EACCES" || e.code === "EBUSY";
+      if (!transient || i >= retries) {
+        try {
+          fs.rmSync(tmp, { force: true }); // don't leave a stray tmp file behind
+        } catch {
+          /* best effort */
+        }
+        throw e;
+      }
+      sleepSync(20 * (i + 1));
+    }
+  }
 }
 
 export const readJobs = () => readJSON(JOBS_PATH, []);
