@@ -26,6 +26,13 @@ async function main() {
   // an unresolvable DB is a hard error, Stage 4 cannot run without its target.
   const DB_ID = await resolveNotionDb(notion, "jobHunt");
 
+  // Read the live DB's columns once so the write only sends properties that
+  // actually exist — the DB (not the code) is the source of truth for its
+  // schema, so a column the user removed (e.g. Verified/VerifiedAt) is silently
+  // skipped instead of failing every page create.
+  const db = await notion.databases.retrieve({ database_id: DB_ID });
+  const allowedProps = new Set(Object.keys(db.properties));
+
   const jobs = readJobs();
   const pending = jobs.filter(isPushable);
   const unverified = jobs.filter((j) => j.verified === null).length;
@@ -43,7 +50,7 @@ async function main() {
   let errors = 0;
   for (const entry of pending) {
     try {
-      await createJobRow(notion, DB_ID, entry, { careerPageUrl: careerUrlFor(entry.company) });
+      await createJobRow(notion, DB_ID, entry, { careerPageUrl: careerUrlFor(entry.company), allowedProps });
       // Persist the pushed flag immediately under the jobs.json lock (same lock
       // Stages 2/3 use), so a concurrent cron run can't be clobbered — crash-safe
       // resume point.

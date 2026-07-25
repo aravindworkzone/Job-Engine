@@ -9,11 +9,15 @@ const STATE_PATH = path.resolve(__dirname, "../../data/notionState.json");
 // workspace where it exists and is shared.
 const DEFAULT_JOBHUNT_DB = "6e50df73695b4c94a101eb95fa3f8a50";
 
-// EXACT copy of the real 🎯 Job Hunt DB schema, snapshotted from the live
-// workspace on 2026-07-02 (databases.retrieve, option ids stripped). If the DB
+// EXACT copy of the real 🎯 Job Hunt DB schema, re-snapshotted from the live
+// workspace on 2026-07-25 (databases.retrieve, option ids stripped). If the DB
 // ever has to be recreated, it comes back with every column — including the
 // manually-curated ones (Contact, Next Action, Follow-up Date) — and the full
 // Status workflow with the original colors. Re-snapshot if you change the DB.
+// Note: the user removed Verified/VerifiedAt on 2026-07-25 (Stage 4 now writes
+// schema-aware, so a missing column is skipped, not an error). The DB also has a
+// SrNo (unique_id) column, deliberately omitted here — Notion can't create a
+// unique_id property via the API, so a recreated DB would need it re-added by hand.
 export const JOB_HUNT_TITLE = "🎯 Job Hunt";
 export const JOB_HUNT_SCHEMA = {
   Company: { title: {} },
@@ -39,16 +43,6 @@ export const JOB_HUNT_SCHEMA = {
       ],
     },
   },
-  Verified: {
-    select: {
-      options: [
-        { name: "yes", color: "green" },
-        { name: "no", color: "red" },
-        { name: "manual", color: "yellow" },
-      ],
-    },
-  },
-  VerifiedAt: { date: {} },
   "Follow-up Date": { date: {} },
   "Next Action": { rich_text: {} },
   Contact: { rich_text: {} },

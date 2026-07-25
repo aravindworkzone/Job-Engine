@@ -2,8 +2,7 @@
 // (jobs.json is the source of truth now); Stage 4 reuses it to push verified
 // leads. Property mapping follows the confirmed schema:
 //   Company (title) · Role/Location/Salary/Growth/Contact/Next Action (text) ·
-//   Score (number) · Source (url) · Status/Verified (select) ·
-//   VerifiedAt/Follow-up Date (date)
+//   Score (number) · Source (url) · Status (select) · Follow-up Date (date)
 
 import { notionNewLeadStatus, notionFieldDefaults, followupDays } from "../controller/index.js";
 
@@ -15,7 +14,13 @@ const isoDate = (d) => d.toISOString().slice(0, 10);
 // Every working column gets a value: real data when the pipeline has it
 // (source salary, Stage 3's resolved careers page in `careerPageUrl`),
 // controller fallbacks otherwise — a pushed row is never half-empty.
-export function entryToProperties(entry, { careerPageUrl = null, now = new Date() } = {}) {
+//
+// `allowedProps` (a Set of the live DB's property names) makes the write
+// schema-aware: any mapped column the DB no longer has is dropped instead of
+// 400-ing the whole page. This self-heals column drift — e.g. the user removing
+// Verified/VerifiedAt — so the pipeline never hard-fails on a renamed/deleted
+// column. Omit it to get the full mapping (used by tests).
+export function entryToProperties(entry, { careerPageUrl = null, now = new Date(), allowedProps = null } = {}) {
   const d = notionFieldDefaults();
   const followup = new Date(now.getTime() + followupDays() * 24 * 60 * 60 * 1000);
   const properties = {
@@ -31,9 +36,15 @@ export function entryToProperties(entry, { careerPageUrl = null, now = new Date(
   };
   if (entry.location) properties.Location = rt(entry.location);
   if (isUrl(entry.url)) properties.Source = { url: entry.url };
-  // Verified is a select of yes/no/manual; only set when Stage 3 tagged it.
-  if (entry.verified) properties.Verified = { select: { name: entry.verified } };
-  if (entry.verifiedAt) properties.VerifiedAt = { date: { start: entry.verifiedAt } };
+  // Stage 3's verdict (entry.verified/verifiedAt) is NOT mirrored to Notion —
+  // the user removed the Verified/VerifiedAt columns on 2026-07-25; the verdict
+  // lives in jobs.json and gates the push (isPushable), it isn't a DB column.
+  // Drop anything the live DB doesn't actually have (schema drift → no 400).
+  if (allowedProps) {
+    for (const key of Object.keys(properties)) {
+      if (!allowedProps.has(key)) delete properties[key];
+    }
+  }
   return properties;
 }
 
