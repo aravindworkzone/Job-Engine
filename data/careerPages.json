@@ -1,0 +1,82 @@
+{
+  "atumx": {
+    "company": "AtumX",
+    "url": "https://job-boards.greenhouse.io/atumworks",
+    "atsType": "greenhouse",
+    "token": "atumworks",
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:31.923Z"
+  },
+  "3g hr services": {
+    "company": "3G HR Services",
+    "url": "https://apna.co/jobs/3g_hr_services-jobs-in-hyderabad",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:33.593Z"
+  },
+  "mastech digital": {
+    "company": "Mastech Digital",
+    "url": "https://careers.smartrecruiters.com/MastechDigital",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:36.907Z"
+  },
+  "staples india business innovation hub": {
+    "company": "Staples India Business Innovation Hub",
+    "url": "https://www.ambitionbox.com/jobs/senior-manager-product-management-in-staples-india-innovation-business-hub-private-limited-naukri_030626504662-jdp",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:40.377Z"
+  },
+  "zeptoware system private": {
+    "company": "Zeptoware System Private",
+    "url": "https://www.getzep.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:43.832Z"
+  },
+  "capgemini": {
+    "company": "Capgemini",
+    "url": "https://www.capgemini.com/us-en/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:45.177Z"
+  },
+  "early career": {
+    "company": "Early Career",
+    "url": "https://www.linkedin.com/jobs/early-career-program-jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:46.921Z"
+  },
+  "interiors with art ltd": {
+    "company": "Interiors With Art Ltd",
+    "url": "https://www.jobaaj.com/company/interiors-with-art-ltd-careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:51.365Z"
+  },
+  "freshworks": {
+    "company": "Freshworks",
+    "url": "https://www.freshworks.com/company/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:56.617Z"
+  },
+  "alphasense": {
+    "company": "Alphasense",
+    "url": "http://job-boards.greenhouse.io/alphasense",
+    "atsType": "greenhouse",
+    "token": "alphasense",
+    "leverCompany": null,
+    "resolvedAt": "2026-07-25T09:40:57.378Z"
+  }
+}
