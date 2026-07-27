@@ -78,5 +78,85 @@
     "token": "alphasense",
     "leverCompany": null,
     "resolvedAt": "2026-07-25T09:40:57.378Z"
+  },
+  "dish": {
+    "company": "Dish",
+    "url": "https://careers.dish.com/login",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:55:49.974Z"
+  },
+  "gokwik": {
+    "company": "GoKwik",
+    "url": "https://gokwik.keka.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:55:52.305Z"
+  },
+  "friday media tech india (fmg)": {
+    "company": "Friday Media Tech India (fmg)",
+    "url": "https://fmgsuite.com/jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:00.855Z"
+  },
+  "smarkworking": {
+    "company": "Smarkworking",
+    "url": "https://jobs.lever.co/smart-working-solutions",
+    "atsType": "lever",
+    "token": null,
+    "leverCompany": "smart-working-solutions",
+    "resolvedAt": "2026-07-27T06:56:02.638Z"
+  },
+  "hackajob": {
+    "company": "hackajob",
+    "url": "https://hackajob.com/en-us/jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:04.359Z"
+  },
+  "scoutit": {
+    "company": "Scoutit",
+    "url": "https://www.jobaaj.com/company/scoutit-careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:06.636Z"
+  },
+  "waters corporation": {
+    "company": "Waters Corporation",
+    "url": "https://www.waters.com/nextgen/us/en/about-waters/careers.html",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:07.643Z"
+  },
+  "freecharge": {
+    "company": "Freecharge",
+    "url": "https://en.wikipedia.org/wiki/Freecharge",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:09.459Z"
+  },
+  "bugcrowd": {
+    "company": "Bugcrowd",
+    "url": "https://www.bugcrowd.com/about/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:10.469Z"
+  },
+  "nvidia ai": {
+    "company": "NVIDIA AI",
+    "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-27T06:56:12.184Z"
   }
 }
