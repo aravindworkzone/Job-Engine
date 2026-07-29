@@ -158,5 +158,85 @@
     "token": null,
     "leverCompany": null,
     "resolvedAt": "2026-07-27T06:56:12.184Z"
+  },
+  "nvidia": {
+    "company": "NVIDIA",
+    "url": "https://www.quantumjobs.us/company/nvidia",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:24:56.879Z"
+  },
+  "hire feed": {
+    "company": "Hire Feed",
+    "url": "https://jobs.thefeed.com",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:24:59.473Z"
+  },
+  "freehand": {
+    "company": "Freehand",
+    "url": "https://jobs.ashbyhq.com/freehand",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:00.913Z"
+  },
+  "apollo": {
+    "company": "Apollo",
+    "url": "http://www.apollooptical.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:02.827Z"
+  },
+  "weave": {
+    "company": "Weave",
+    "url": "https://www.getclera.com/jobs/companies/weave",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:07.073Z"
+  },
+  "mesh": {
+    "company": "Mesh",
+    "url": "https://job-boards.greenhouse.io/mesh",
+    "atsType": "greenhouse",
+    "token": "mesh",
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:09.787Z"
+  },
+  "cencora": {
+    "company": "Cencora",
+    "url": "https://careers.cencora.com/us/en",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:11.584Z"
+  },
+  "egc global services india pvt ltd": {
+    "company": "EGC Global Services India Pvt Ltd",
+    "url": "https://egcgs.theegc.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:18.776Z"
+  },
+  "meg world technologies pvt ltd": {
+    "company": "MEG WORLD TECHNOLOGIES PVT LTD",
+    "url": "https://megit.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:24.788Z"
+  },
+  "epam systems": {
+    "company": "EPAM Systems",
+    "url": "https://www.epam.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-29T06:25:26.962Z"
   }
 }

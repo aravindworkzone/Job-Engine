@@ -347,9 +347,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:24:57.104Z",
+    "pushedToNotion": true
   },
   {
     "id": "3c29d55933b39cd5811529e4565f6e580ce97e970efa7d8f7461bea10c1f0899",
@@ -363,9 +363,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:24:59.566Z",
+    "pushedToNotion": true
   },
   {
     "id": "09505b36b4c16fd411b63e9dbd21cd60de6d864a9e89be970b4a3f6c7c7d4f54",
@@ -395,9 +395,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:25:01.246Z",
+    "pushedToNotion": true
   },
   {
     "id": "2de9fc60bef34934568198df09f6faf7de03cdba6f64923e94fcdbb7e2658c87",
@@ -411,9 +411,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:25:02.972Z",
+    "pushedToNotion": true
   },
   {
     "id": "7a88db530ada46d0f568e8b3ec0c33c2f0cfb576b102369b308706b23576dba2",
@@ -427,9 +427,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:25:08.877Z",
+    "pushedToNotion": true
   },
   {
     "id": "ad4ca5d77e21a327aa428252f00d2c0ad74cf29eea19f7972cb26def7f49d9b5",
@@ -443,9 +443,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "yes",
+    "verifiedAt": "2026-07-29T06:25:09.904Z",
+    "pushedToNotion": true
   },
   {
     "id": "f67333f6aae747ee89d28f96bb6aedbe63e77d6646b4964fc46f66c21cbaf6f0",
@@ -459,9 +459,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:25:11.677Z",
+    "pushedToNotion": true
   },
   {
     "id": "9b7c7ecc0ea456bb02f47f1854b5db4de37e9b3e7c85040f82964bdf554ef044",
@@ -475,9 +475,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "yes",
+    "verifiedAt": "2026-07-29T06:25:23.580Z",
+    "pushedToNotion": true
   },
   {
     "id": "87ea37e6bc745bf8f9abd420120dbf1049fb3232891ffc718e4f75f60e5f5f19",
@@ -491,9 +491,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-25T09:40:30.800Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:24:57.104Z",
+    "pushedToNotion": true
   },
   {
     "id": "a1269bf47a4104740ee5a84b409bea0467ff77013050bc83d16af44ca18481dd",
@@ -507,9 +507,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:25:24.884Z",
+    "pushedToNotion": true
   },
   {
     "id": "7345d66085a1605f0847a6e5def1ef7987c521b9701575918cc97d88077b8bda",
@@ -523,9 +523,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-29T06:25:27.093Z",
+    "pushedToNotion": true
   },
   {
     "id": "7f189fe5bce7c36e087c5f68b849e0d5f9f3c0badc5007436e8a5a905b76d248",
@@ -987,6 +987,182 @@
     "salary": "2.5-3 Lacs",
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "976ffeb734fb6a258488cac1d9b3c60e9fc9b0048d3391ecedbce14def4dd33f",
+    "title": "Full Stack / PHP Developer",
+    "company": "Digital Magic Technologies Private Limited",
+    "url": "https://www.simplyhired.co.in/job/GjR4FgSBL5g3CbUUEsubXF0_C1mRNP8WMmT29Ri8czHProMGGJEpmA",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-28T13:00:00.000Z",
+    "score": 58,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "c2e354d483337b7b8a35d6f297a364a8b7891b448165fa3b95981944d25b403a",
+    "title": "Senior Developer Azure Full Stack (Adv+Elite) (Guindy, Chennai)",
+    "company": "Husky Technologies",
+    "url": "https://www.foundit.in/job/senior-developer-azure-full-stack-adv-elite-guindy-chennai-husky-technologies-chennai-60458978",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-26T00:00:00.000Z",
+    "score": 55,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "c00c1b98961aa34dd2895c7a8dc161a00f2b323827de1979076217f1b38280ec",
+    "title": "TCS Mega WalkIn Drive || Java Full Stack Developer (React & AWS) || 1st Aug 2026 || Chennai",
+    "company": "Tata Consultancy Services",
+    "url": "https://in.linkedin.com/jobs/view/tcs-mega-walkin-drive-java-full-stack-developer-react-aws-1st-aug-2026-chennai-at-tata-consultancy-services-4445919303",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-27T00:00:00.000Z",
+    "score": 50,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "4fa20e625dfdb240cb738bf3b649c37aeba2a75fa7063b9209d92d8c67f5212a",
+    "title": "Walk-in || Tcs Mega Walk-In Drive | Java Full Stack Developer",
+    "company": "Tata Consultancy Services",
+    "url": "https://bebee.com/in/jobs/walk-in-tcs-mega-walk-in-drive-java-full-stack-developer-tata-consultancy-services-chennai--t7xk-779464862",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-29T00:00:00.000Z",
+    "score": 50,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "94e574d8ba90d83d18e57ab023d2af69bf626fef8bb6905c2bfdda5c8324975c",
+    "title": "Software Engineer III (Full Stack)",
+    "company": "Elsevier",
+    "url": "https://in.linkedin.com/jobs/view/software-engineer-iii-full-stack-at-elsevier-4445138646",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-27T00:00:00.000Z",
+    "score": 47,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "747cbc41e0ad6fb5df80d7feb8e6a8b756e4e54d5dba6aa9db8980f0ad8403ca",
+    "title": "Sr. SD - Dotnet (Full stack) / Chennai / Immediate joiner",
+    "company": "Mount Talent Consulting",
+    "url": "https://www.shine.com/jobs/sr-sd-dotnet-full-stack-chennai-immediate-joiner/mount-talent-consulting/19323186",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-28T00:00:00.000Z",
+    "score": 44,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "c92039f919d350b7bb533a313d03a880605eec7c128758b35b76374fc13f7cae",
+    "title": "Lead Java Full Stack Engineer",
+    "company": "360 Technology",
+    "url": "https://in.linkedin.com/jobs/view/lead-java-full-stack-engineer-at-360-technology-4444883071",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-27T00:00:00.000Z",
+    "score": 42,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "be242de5b6589be24b8bdc785ac16c87b0156990cf1a0b993e26f00768b6cb30",
+    "title": "Full Stack Software Engineer",
+    "company": "Sophos",
+    "url": "https://jooble.org/jdp/-8600884274414448039",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-28T15:06:32.8330000",
+    "score": 17,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "7f4dd210c95445ced403136e0480e8bb0a416974a169d1d0cd0b118bf3378dff",
+    "title": "SDE 2 Backend Engineer",
+    "company": "Netomi",
+    "url": "https://jooble.org/jdp/4292538045192835586",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-27T08:25:54.8500000",
+    "score": 3,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "0675c1f4fb095e4d9b6f883ea19482a315c515df817295a84db9f96f26ffb1bc",
+    "title": "Frontend Engineer",
+    "company": "Certa",
+    "url": "https://jooble.org/jdp/-6603865650822901488",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-27T20:24:20.2630000",
+    "score": 0,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "29d46724f10be31a17430587d78cc4600cefb81d916df3b16202b7aeca99d9d8",
+    "title": "Backend/Cloud Engineer",
+    "company": "SonicWall",
+    "url": "https://jooble.org/jdp/-3227240713656193416",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-28T20:07:19.1400000",
+    "score": 0,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-29T06:24:55.786Z",
     "verified": null,
     "verifiedAt": null,
     "pushedToNotion": false
