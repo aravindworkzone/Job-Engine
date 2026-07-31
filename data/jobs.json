@@ -539,9 +539,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:52:48.578Z",
+    "pushedToNotion": true
   },
   {
     "id": "1815b0f4e725551a4f19d980cc1abc95cecf0fa2e55bb9aa9ceef4fe0b307235",
@@ -555,9 +555,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:52:52.843Z",
+    "pushedToNotion": true
   },
   {
     "id": "a7a4168f51ddbdd2e7f2231daf4e6b2beca37b9b987c13146f95f190e9d4dfb3",
@@ -571,9 +571,9 @@
     "salary": "Not Disclosed",
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:52:54.170Z",
+    "pushedToNotion": true
   },
   {
     "id": "a1e5226e97a107d9bd25f5ab02496da4c943f5f5dfdf7da6339861867e944f5a",
@@ -587,9 +587,9 @@
     "salary": "1.25-6 Lacs",
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:52:54.170Z",
+    "pushedToNotion": true
   },
   {
     "id": "ce07a26164a119544b2560ee56c41fdb384f7417198b60e572db1b6e3e747994",
@@ -603,9 +603,9 @@
     "salary": "13-23 Lacs",
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:52:57.887Z",
+    "pushedToNotion": true
   },
   {
     "id": "1eb828c6086dc5d243e586b59f6e33778ba3e539db533b526f20dc74f81d4774",
@@ -619,9 +619,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:00.187Z",
+    "pushedToNotion": true
   },
   {
     "id": "ef80a981ff705f015a8c2de9594f96f5327fe26e0d508f5ceaeeb995ff559240",
@@ -635,9 +635,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:04.177Z",
+    "pushedToNotion": true
   },
   {
     "id": "4773a0661790649250bf40436fb336e1b01b7f6a27f5c6a0334d0895300c9636",
@@ -651,9 +651,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:07.513Z",
+    "pushedToNotion": true
   },
   {
     "id": "bbaa0550b49bcb3e7ae391a9a8d86a04e026f7e18dfcb5775d9ca390b04144cd",
@@ -667,9 +667,9 @@
     "salary": "14-17 Lacs",
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:09.296Z",
+    "pushedToNotion": true
   },
   {
     "id": "73fe615c78e30df05964ccf50d59dd60df5f9407103fa10fea7d7b9977f7170f",
@@ -683,9 +683,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:10.686Z",
+    "pushedToNotion": true
   },
   {
     "id": "268d64142fcd72b5a77bb81266b4e1b33747d49cc359198d2cc744728fbb783c",
@@ -699,9 +699,9 @@
     "salary": "15-20 Lacs",
     "growth": null,
     "sourcedAt": "2026-07-27T06:55:47.890Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:14.116Z",
+    "pushedToNotion": true
   },
   {
     "id": "a73f9ba5411c7e5cc558a1beec6a8259155222263b47d077eb4b74cac9d7d0c7",
@@ -1035,9 +1035,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:07.513Z",
+    "pushedToNotion": true
   },
   {
     "id": "4fa20e625dfdb240cb738bf3b649c37aeba2a75fa7063b9209d92d8c67f5212a",
@@ -1051,9 +1051,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-07-31T06:53:07.513Z",
+    "pushedToNotion": true
   },
   {
     "id": "94e574d8ba90d83d18e57ab023d2af69bf626fef8bb6905c2bfdda5c8324975c",
@@ -1163,6 +1163,150 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "fe532732373825dc55e20a1d7227bb5fba215109a41723c4c469abc856684fd3",
+    "title": "Full Stack Developer (.NET MVC & Angular)",
+    "company": "Indium Software India",
+    "url": "https://apna.co/job/chennai/net-mvc-and-angular-developer-1268531589",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-30T00:00:00.000Z",
+    "score": 58,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "b2dda464c0cc24c852c6887fb70dc2725d5cc0bc28c4e0130d20b320ed4f8e0c",
+    "title": "Full Stack Developer (.NET | Azure | React | SPFx)",
+    "company": "FactuON",
+    "url": "https://in.linkedin.com/jobs/view/full-stack-developer-net-azure-react-spfx-at-factuon-4446789325",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-30T15:00:00.000Z",
+    "score": 52,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "5da4aea198e1ee419eae7b3d13a9b963b639aabb2cb87da194e661c02c8ffcd8",
+    "title": "Technical Team Lead – Full Stack / Platform",
+    "company": "Nexifyr Consulting Pvt Ltd",
+    "url": "https://www.simplyhired.co.in/job/EyUgupN3KGJDK0xD-b6hlqge-7W_LJeUl_sJoGIDyzpEkD8uXwEq8w",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-29T00:00:00.000Z",
+    "score": 50,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "5d0ae40a8c27af8c04ec43a5a0314d7f81866b35ad6b0f6f12f3951157c7883f",
+    "title": "Java Fullstack developer & Lead",
+    "company": "Scadea Software Solutions",
+    "url": "https://in.linkedin.com/jobs/view/java-fullstack-developer-lead-at-scadea-software-solutions-4446034245",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-29T00:00:00.000Z",
+    "score": 50,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "664548a0771ea99c10cd6a365004eacecb3bced6794fd57e75b6b75bfdbd0a89",
+    "title": "Lead Software Engineer - Fullstack (Java + React)",
+    "company": "Gartner Careers",
+    "url": "https://jobs.gartner.com/jobs/job/111336-lead-software-engineer-fullstack-java-react/",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-28T00:00:00.000Z",
+    "score": 47,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "bb0f75ef2d3317a6fec2bcda38cda68422f9f28c95dae2385ff015d57845b0d8",
+    "title": "Developer",
+    "company": "Cognizant",
+    "url": "https://careers.cognizant.com/global-en/jobs/00068932171/developer/",
+    "source": "jsearch",
+    "location": "Chennai, Tamil Nadu, IN",
+    "postedAt": "2026-07-30T00:00:00.000Z",
+    "score": 40,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "defff18412d8a3b68138e596c31dc0ea3316b7f811e9f2078d9585ad962cf298",
+    "title": "Full-Stack Web App Developer (JavaScript/TypeScript + Python or Node)",
+    "company": "Mindrift",
+    "url": "https://jooble.org/jdp/-6670960651352618833",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-29T19:54:26.8170000",
+    "score": 27,
+    "salary": "$35 per hour",
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "a92d57e4db866ab8475084bbe55fb6cb45d96869f58708693094ebd8bd05177c",
+    "title": "Principal Full Stack Engineer",
+    "company": "Fidelity TalentSource",
+    "url": "https://jooble.org/jdp/6536860215161695607",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-30T20:48:30.6013064+00:00",
+    "score": 17,
+    "salary": "$70 - $115.7 per hour",
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
+    "verified": null,
+    "verifiedAt": null,
+    "pushedToNotion": false
+  },
+  {
+    "id": "7a4081bf6f050b55b9f0e3a387d840ae5548866028c82de11b157c5e9160a9d4",
+    "title": "Front End Developer",
+    "company": "Teamified",
+    "url": "https://jooble.org/jdp/-5636924654251736998",
+    "source": "jooble",
+    "location": "India",
+    "postedAt": "2026-07-30T13:54:32.8200000",
+    "score": 8,
+    "salary": null,
+    "growth": null,
+    "sourcedAt": "2026-07-31T06:52:37.938Z",
     "verified": null,
     "verifiedAt": null,
     "pushedToNotion": false

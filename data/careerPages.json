@@ -238,5 +238,77 @@
     "token": null,
     "leverCompany": null,
     "resolvedAt": "2026-07-29T06:25:26.962Z"
+  },
+  "nameless": {
+    "company": "Nameless",
+    "url": "https://hiringgo.com/company/nameless",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:52:50.891Z"
+  },
+  "infosys": {
+    "company": "Infosys",
+    "url": "https://www.infosys.com/careers/americas.html",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:52:53.934Z"
+  },
+  "mphasis": {
+    "company": "Mphasis",
+    "url": "https://www2.mphasis.com/hot-jobs.html",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:52:56.006Z"
+  },
+  "konecta india": {
+    "company": "Konecta India",
+    "url": "https://konecta.com/join-us",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:53:00.086Z"
+  },
+  "ust": {
+    "company": "UST",
+    "url": "https://www.ust.com/en/jobsearch",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:53:01.472Z"
+  },
+  "tata consultancy services": {
+    "company": "Tata Consultancy Services",
+    "url": "https://www.tcs.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:53:06.155Z"
+  },
+  "frobin technologies": {
+    "company": "Frobin Technologies",
+    "url": "https://www.roberthalf.com/us/en/jobs/all/technology",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:53:09.122Z"
+  },
+  "revalsys technologies": {
+    "company": "Revalsys Technologies",
+    "url": "https://www.revalsys.com/careers.html",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:53:10.546Z"
+  },
+  "people prime worldwide": {
+    "company": "People Prime Worldwide",
+    "url": "https://people-prime.com/activejobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-07-31T06:53:12.259Z"
   }
 }
