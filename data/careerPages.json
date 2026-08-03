@@ -310,5 +310,85 @@
     "token": null,
     "leverCompany": null,
     "resolvedAt": "2026-07-31T06:53:12.259Z"
+  },
+  "bcforward": {
+    "company": "BCforward",
+    "url": "https://careers.smartrecruiters.com/BCforward3",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:11.595Z"
+  },
+  "burgeon it services": {
+    "company": "Burgeon It Services",
+    "url": "https://www.burgeonits.com/careers/index.html",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:12.771Z"
+  },
+  "hitachi energy": {
+    "company": "Hitachi Energy",
+    "url": "https://careers.hitachi.com/search/hitachi-energy-usa-inc/jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:15.533Z"
+  },
+  "ac milan academy kerala": {
+    "company": "AC Milan Academy Kerala",
+    "url": "https://www.acmilan.com/en/club/work-with-us",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:17.949Z"
+  },
+  "avlview.com": {
+    "company": "AVLView.com",
+    "url": "https://avlview.com",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:21.543Z"
+  },
+  "unique it solution": {
+    "company": "Unique It Solution",
+    "url": "https://theuniqueitsolution.com/career",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:25.237Z"
+  },
+  "deservely technologies": {
+    "company": "Deservely Technologies",
+    "url": "https://devtechnology.com/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:27.208Z"
+  },
+  "tripjack": {
+    "company": "Tripjack",
+    "url": "https://careers.trip.com",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:29.182Z"
+  },
+  "walmart": {
+    "company": "Walmart",
+    "url": "https://careers.walmart.com/us/en/home",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:35.199Z"
+  },
+  "accenture in india": {
+    "company": "Accenture in India",
+    "url": "https://www.accenture.com/in-en/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-03T06:55:36.772Z"
   }
 }
