@@ -390,5 +390,85 @@
     "token": null,
     "leverCompany": null,
     "resolvedAt": "2026-08-03T06:55:36.772Z"
+  },
+  "zemoso technologies": {
+    "company": "ZeMoSo Technologies",
+    "url": "https://www.zemosolabs.com/careers/software-developer-react",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:33.561Z"
+  },
+  "the agentic loop": {
+    "company": "The Agentic Loop",
+    "url": "https://job-boards.greenhouse.io/taxbit/jobs/6111141004",
+    "atsType": "greenhouse",
+    "token": "taxbit",
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:34.529Z"
+  },
+  "rivirtual academy": {
+    "company": "RiVirtual Academy",
+    "url": "https://bebee.com/in/jobs/software-engineer-rivirtual-academy-hyderabad-telangana--t7xk-779240006",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:36.845Z"
+  },
+  "aroop kr gogoi": {
+    "company": "Aroop Kr Gogoi",
+    "url": "https://www.arup.com/en-us/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:40.085Z"
+  },
+  "rapidue technologies": {
+    "company": "Rapidue Technologies",
+    "url": "https://careers.cloud.com",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:41.619Z"
+  },
+  "codefeast enterprises": {
+    "company": "Codefeast Enterprises",
+    "url": "https://www.codefeast.in/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:42.850Z"
+  },
+  "color employer, llc": {
+    "company": "Color Employer, LLC",
+    "url": "https://startup.jobs/product-manager-group-color-employer-llc-8481968",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:45.908Z"
+  },
+  "vikram tea": {
+    "company": "Vikram Tea",
+    "url": "https://www.ambitionbox.com/jobs/vikram-tea-jobs-cmp",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:20:49.168Z"
+  },
+  "digital magic technologies private limited": {
+    "company": "Digital Magic Technologies Private Limited",
+    "url": "https://magic.dev/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:21:00.840Z"
+  },
+  "husky technologies": {
+    "company": "Husky Technologies",
+    "url": "https://www.husky.co/en/careers/portal",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-05T06:21:02.412Z"
   }
 }
