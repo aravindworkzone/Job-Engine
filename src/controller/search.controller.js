@@ -11,11 +11,12 @@ const num = (v, fallback) => {
 // Location priority, highest first. Override: JOB_LOCATIONS="Pune,Mumbai,Remote"
 export function getLocations() {
   const fromEnv = csv(process.env.JOB_LOCATIONS);
-  return fromEnv.length ? fromEnv : ["Chennai", "Coimbatore", "Bengaluru"];
+  // return fromEnv.length ? fromEnv : ["Chennai", "Coimbatore", "Bengaluru"];
+  return fromEnv.length ? fromEnv : ["Tirupur", "Coimbatore"];
 }
 
 // Alternate spellings that must score the same as the canonical name.
-export const LOCATION_ALIASES = { bengaluru: ["bangalore"] };
+// export const LOCATION_ALIASES = { bengaluru: ["bangalore"] };
 
 // Scoring weight per location, derived from list position (1st: 25, 2nd: 15,
 // 3rd: 10, then decreasing) — so reordering JOB_LOCATIONS reorders the scoring.
@@ -105,19 +106,6 @@ export function getRejectKeywords() {
   };
 }
 
-// Source importance registry. NO source is mandatory (a dead one is retried,
-// then skipped — the run always completes), but they are not equal: when a
-// "critical" source dies, the orchestrator warns loudly about what was lost.
-//   critical    — the search engine: JSearch (quality: Google-for-Jobs aggregation
-//                 of LinkedIn/Indeed/Naukri, but paid quota → ONE query on the
-//                 primary location only) + Jooble (volume: thousands of boards,
-//                 loops EVERY configured location — it alone covers the
-//                 non-primary cities).
-//   backup      — free redundancy; Adzuna also has numeric INR salaries that
-//                 feed the salary scoring.
-//   useful      — niche, high-signal.
-//   redundant   — overlaps a critical source; not worth paid credits.
-//   situational — only meaningful in specific configs.
 export const SOURCE_ROLES = {
   jsearch: {
     tier: "critical",
