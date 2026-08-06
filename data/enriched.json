@@ -1,0 +1,166 @@
+{
+  "basics": {
+    "name": "ARAVIND A",
+    "email": "aravind.workzone@gmail.com",
+    "phone": "+91 8122479301",
+    "location": "Tiruppur, TamilNadu",
+    "headline": "Full Stack ( MERN / PERN ) Developer",
+    "summary": "Full-Stack MERN / PERN Developer (1.6 yrs) who ships production SaaS end-to-end auth systems (JWT/OAuth), payment webhooks, REST APIs, and cloud deployments."
+  },
+  "links": [
+    {
+      "label": "Personal Site",
+      "url": "aravind-mern.vercel.app"
+    },
+    {
+      "label": "GitHub",
+      "url": "github.com/aravindworkzone"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "linkedin.com/in/aravind-a-dev"
+    }
+  ],
+  "skills": [
+    "React",
+    "Node.js",
+    "TypeScript",
+    "MongoDB",
+    "PostgreSQL",
+    "JavaScript",
+    "Redux Toolkit",
+    "RTK Query",
+    "Tailwind CSS",
+    "Express",
+    "REST APIs",
+    "JWT Auth",
+    "OAuth 2.0",
+    "Socket.io",
+    "Middleware Architecture",
+    "Git",
+    "GitHub",
+    "Vercel",
+    "Render",
+    "MongoDB Atlas",
+    "Postman"
+  ],
+  "experience": [
+    {
+      "company": "AV7 SCM (The SCM Silks)",
+      "role": "Full Stack Developer",
+      "startDate": "Jan 2025",
+      "endDate": "Present",
+      "location": "Tiruppur, TN",
+      "highlights": [
+        "Built 20+ production React modules (Redux Toolkit) for an internal ERP serving 500+ employees cut page load time 25% via render optimization and state restructuring.",
+        "Engineered a reusable React component library adopted by 3 teams, cutting duplicate code ~30% and feature delivery time by 2–3 days per sprint.",
+        "Debugged and stabilized business-critical JavaScript modules fixed scope-leakage and event-handling defects impacting 500+ daily users.",
+        "Integrated REST APIs across ERP modules and optimized SQL queries behind high-traffic reports cut month-end report generation time.",
+        "Drove sprint planning and peer code reviews enforced standards keeping production at zero critical bugs post-deployment."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Arkalyn-Kitty — Group Expense Manager SaaS",
+      "description": "Built payment infrastructure with Razorpay HMAC webhook verification and idempotent locks handles concurrent financial operations without race conditions or double-charges.",
+      "techStack": [
+        "React",
+        "Node.js",
+        "Express",
+        "TypeScript",
+        "MongoDB",
+        "Razorpay"
+      ],
+      "url": "arkalynkitty-fin.vercel.app"
+    },
+    {
+      "name": "WorkZone - Task Management SaaS",
+      "description": "Implemented JWT auth with HttpOnly cookies and rotating refresh tokens (reuse detection) mitigates XSS token theft; supports 3 concurrent devices with per-device logout.",
+      "techStack": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "RTK Query",
+        "JWT",
+        "AI API ( Groq )"
+      ],
+      "url": "workzone-todo.vercel.app"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Accord Academy",
+      "degree": "MERN Stack Developer",
+      "field": null,
+      "startDate": "Jun 2024",
+      "endDate": "Jan 2025",
+      "gpa": null
+    },
+    {
+      "institution": "Builders Engineering College",
+      "degree": "B.E - Electrical and Electronics Engineering",
+      "field": null,
+      "startDate": "2021",
+      "endDate": "2025",
+      "gpa": null
+    }
+  ],
+  "certifications": [
+    "MERN Stack Developer"
+  ],
+  "targetRoles": [
+    "Full Stack Developer",
+    "MERN Developer",
+    "Backend Engineer",
+    "Frontend Engineer",
+    "SaaS Developer",
+    "Cloud Engineer"
+  ],
+  "enrichedAt": "2026-08-06T09:48:48.530Z",
+  "notionData": {
+    "jobHunt": []
+  },
+  "githubActivity": null,
+  "portfolioExtras": {
+    "url": "https://aravind-mern.vercel.app",
+    "title": "Aravind A — Full-Stack MERN Developer | React · Node · MongoDB",
+    "headings": [],
+    "newSnippets": [
+      "Full-Stack MERN Developer shipping production-grade web apps — JWT auth with refresh token rotation, role-based access control, AI integration, and live deployments. Open to full-stack roles.",
+      "Production-grade web apps with secure auth, RBAC, and AI integration. 2 live deployed apps. Open to full-stack roles."
+    ]
+  },
+  "publicFootprint": {
+    "query": "ARAVIND A Full Stack Developer Tiruppur, TamilNadu",
+    "source": "exa",
+    "results": [
+      {
+        "title": "Aravind kumar",
+        "url": "https://linkedin.com/in/aravind-kumar-ak",
+        "snippet": "# Aravind kumar Full Stack Engineer | MongoDB • Express • React • Node, Postgres | AWS & GCP Experience | TypeScript, Next.js Tiruppur, Tamil Nadu, India (IN) 500 connections • 1,628 followers ## About Skilled Full Stack Developer (MERN) with 2 years of hands-on experience. Demonstrated ability to develop and maintain complex web applications, ensuring responsiveness and performance. Passionate ab"
+      },
+      {
+        "title": "Aravind M",
+        "url": "https://linkedin.com/in/aravind-m-421359208",
+        "snippet": "# Aravind M .NET Full Stack Developer | Frontend & Backend | JavaScript, jQuery, HTML/CSS, UI/UX |ASP.NET MVC| ASP.NET Core & |C#| SQL Tiruppur, Tamil Nadu, India (IN) 500 connections • 540 followers ## About An Enthusiastic.Net Developer currently developing the future of software development by developing smooth user-interfaces that promote user interaction with information and data. I Value cla"
+      },
+      {
+        "title": "Arvindh S V",
+        "url": "https://linkedin.com/in/arvindhsv13",
+        "snippet": "# Arvindh S V Developer @ Right Angle Solutions Tiruppur Taluka, Tamil Nadu, India (IN) 500 connections • 1,067 followers ## About Full Stack Web Developer with a passion for creating innovative and user-friendly web applications. I have a strong background in front-end and back-end development, as well as experience in designing and implementing scalable solutions. My technical skills include pro"
+      },
+      {
+        "title": "Aravind A",
+        "url": "https://linkedin.com/in/aravind-ak00",
+        "snippet": "# Aravind A Web Developer at Nano Nino S.L. Coimbatore, Tamil Nadu, India (IN) 26 connections • 26 followers ## About \"Hello, I'm Aravind, a motivated fresher in Frontend Development, equipped with comprehensive training in Full Stack Web Development from Pumo Technovation, Gandhipuram, Coimbatore. I possess strong skills in HTML, CSS, JavaScript, Bootstrap and React.js, eager to contribute to inn"
+      },
+      {
+        "title": "💻 From Debugging to Designing – Growing as a Developer 🚀 | Aravind M",
+        "url": "https://www.linkedin.com/posts/aravind-m-421359208_dotnetcore-aspnetmvc-entityframework-activity-7353122564077993985-FdFt",
+        "snippet": "# 💻 From Debugging to Designing – Growing as a Developer 🚀 | Aravind M · LinkedIn · 2025-07-21 **Aravind M**: Full-stack Developer at Spark it tech with 5 years of experience. Based in Tiruppur, Tamil Nadu, India [IN]. --- 💻 From Debugging to Designing – Growing as a Developer 🚀 Lately, I’ve been deep in solving some real-world challenges — optimizing performance on large datasets, integrating"
+      }
+    ]
+  }
+}

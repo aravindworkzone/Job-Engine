@@ -2,6 +2,8 @@
 // and scored. Nothing here is hardcoded in the stages: Stage 2 reads this at
 // run time, and every value can be overridden via env without touching code.
 
+import { onUnlessOff } from "./pipeline.controller.js";
+
 const csv = (s) => (s || "").split(",").map((x) => x.trim()).filter(Boolean);
 const num = (v, fallback) => {
   const n = Number(v);
@@ -12,11 +14,18 @@ const num = (v, fallback) => {
 export function getLocations() {
   const fromEnv = csv(process.env.JOB_LOCATIONS);
   // return fromEnv.length ? fromEnv : ["Chennai", "Coimbatore", "Bengaluru"];
-  return fromEnv.length ? fromEnv : ["Tirupur", "Coimbatore"];
+  return fromEnv.length ? fromEnv : ["Tirupur", "Coimbatore", "Chennai", "Remote"];
 }
 
-// Alternate spellings that must score the same as the canonical name.
-// export const LOCATION_ALIASES = { bengaluru: ["bangalore"] };
+// Alternate spellings that must score the same as the canonical name. Listings
+// are matched by substring, so a spelling variant is a total miss without an
+// entry here ("tirupur" is NOT a substring of "tiruppur"). Both spellings are
+// mapped in each direction so either one may be the configured canonical.
+export const LOCATION_ALIASES = {
+  tirupur: ["tiruppur"],
+  tiruppur: ["tirupur"],
+  bengaluru: ["bangalore"],
+};
 
 // Scoring weight per location, derived from list position (1st: 25, 2nd: 15,
 // 3rd: 10, then decreasing) — so reordering JOB_LOCATIONS reorders the scoring.
@@ -30,6 +39,58 @@ export function getLocationWeights(locations = getLocations()) {
     for (const alias of LOCATION_ALIASES[key] || []) weights[alias] = pts;
   });
   return weights;
+}
+
+// Treat the configured locations as a hard requirement, not just a scoring hint.
+// Without this a job's city only affects its score (max SCORING.locationMax), so
+// country-wide sources (TheirStack filters by country alone) and the paid
+// single-query sources keep landing other cities in jobs.json. Remote roles stay
+// in scope when the profile targets remote. Override: STRICT_LOCATION=off
+export function strictLocation() {
+  return onUnlessOff(process.env.STRICT_LOCATION);
+}
+
+// Foreign-stack titles. The role phrases the sources search for are
+// stack-agnostic — "Full Stack Developer" matches a Java or .NET listing exactly
+// as well as a MERN one — so the stack has to be rejected explicitly. Matched
+// against the TITLE only, on word boundaries: a JD that mentions Java in passing
+// is not a mismatch, a title that leads with it is, and a title naming both
+// ("Java + Angular/React") is still a Java role.
+// Extend: EXTRA_STACK_REJECT="scala,rust"   Disable: STACK_REJECT=off
+const STACK_REJECT_TITLE = [
+  "java",
+  ".net",
+  "dotnet",
+  "c#",
+  "php",
+  "laravel",
+  "python",
+  "django",
+  "ruby",
+  "rails",
+  "golang",
+  "spring boot",
+  "salesforce",
+  "sap",
+  "abap",
+  "wordpress",
+  "drupal",
+  "magento",
+  "sharepoint",
+  "servicenow",
+  "cobol",
+];
+export function getStackRejectTitle() {
+  if (!onUnlessOff(process.env.STACK_REJECT)) return [];
+  return [...STACK_REJECT_TITLE, ...csv(process.env.EXTRA_STACK_REJECT).map((s) => s.toLowerCase())];
+}
+
+// A listing must mention at least this many of the profile's skills. Skills only
+// ever added score (up to SCORING.skillsMax), so a generic title in the right
+// city cleared the filter with zero real overlap. MIN_SKILL_HITS=0 disables;
+// raise it to tighten. Override: MIN_SKILL_HITS=3
+export function minSkillHits() {
+  return num(process.env.MIN_SKILL_HITS, 2);
 }
 
 // Target salary band in LPA. Override: SALARY_BAND_LPA="6,10"

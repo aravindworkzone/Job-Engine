@@ -5,6 +5,7 @@
   "description": "Job-search pipeline. Stage 0: builds a reusable data/profile.json from your resume PDF via the Claude API, as a side-effect of running search-job.",
   "main": "src/searchJob.js",
   "scripts": {
+    "start": "node src/runAll.js",
     "search": "node src/searchJob.js",
     "profile:rebuild": "node src/profile/rebuild.js",
     "source-jobs": "node src/stage2/orchestrator.js",

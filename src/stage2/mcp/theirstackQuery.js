@@ -18,11 +18,25 @@ export async function fetchTheirStack(query) {
     job_country_code_or: [query.countryCode],
     posted_at_max_age_days: 30,
   };
-  const data = await httpJSON("https://api.theirstack.com/v1/jobs/search", {
-    method: "POST",
-    headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  const post = (payload) =>
+    httpJSON("https://api.theirstack.com/v1/jobs/search", {
+      method: "POST",
+      headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  // TheirStack filters by COUNTRY by default, so an unnarrowed query spends the
+  // whole page budget on nationwide results that the Stage 2 location filter
+  // then throws away. Narrow to the configured cities — but this field was not
+  // confirmed against a live response like the output mapping below, so a 4xx
+  // rejection falls back to the country-wide query rather than killing the source.
+  let data;
+  try {
+    data = await post({ ...body, job_location_pattern_or: query.locations });
+  } catch (e) {
+    if (!/HTTP 4\d\d/.test(e.message)) throw e;
+    console.warn(`  [theirstack] location filter rejected (${e.message}) — retrying country-wide`);
+    data = await post(body);
+  }
   const arr = data.data || data.results || [];
   return arr.map((j) =>
     normalizeJob("theirstack", {

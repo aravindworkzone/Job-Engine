@@ -1,474 +1,58 @@
 {
-  "atumx": {
-    "company": "AtumX",
-    "url": "https://job-boards.greenhouse.io/atumworks",
-    "atsType": "greenhouse",
-    "token": "atumworks",
-    "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:31.923Z"
-  },
-  "3g hr services": {
-    "company": "3G HR Services",
-    "url": "https://apna.co/jobs/3g_hr_services-jobs-in-hyderabad",
+  "growai edtech": {
+    "company": "GROWAI Edtech",
+    "url": "https://www.cognii.com/jobs",
     "atsType": null,
     "token": null,
     "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:33.593Z"
+    "resolvedAt": "2026-08-06T09:49:02.603Z"
   },
-  "mastech digital": {
-    "company": "Mastech Digital",
-    "url": "https://careers.smartrecruiters.com/MastechDigital",
+  "swe enterprises": {
+    "company": "Swe Enterprises",
+    "url": "https://www.salesforce.com/company/careers/jobs",
     "atsType": null,
     "token": null,
     "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:36.907Z"
+    "resolvedAt": "2026-08-06T09:49:04.035Z"
   },
-  "staples india business innovation hub": {
-    "company": "Staples India Business Innovation Hub",
-    "url": "https://www.ambitionbox.com/jobs/senior-manager-product-management-in-staples-india-innovation-business-hub-private-limited-naukri_030626504662-jdp",
+  "qinvox": {
+    "company": "Qinvox",
+    "url": "https://www.qualified.com/careers",
     "atsType": null,
     "token": null,
     "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:40.377Z"
+    "resolvedAt": "2026-08-06T09:49:05.406Z"
   },
-  "zeptoware system private": {
-    "company": "Zeptoware System Private",
-    "url": "https://www.getzep.com/careers",
+  "easy field services": {
+    "company": "Easy Field services",
+    "url": "https://jobs.bd.com/en/career-areas-field-services",
     "atsType": null,
     "token": null,
     "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:43.832Z"
+    "resolvedAt": "2026-08-06T09:49:06.674Z"
   },
-  "capgemini": {
-    "company": "Capgemini",
-    "url": "https://www.capgemini.com/us-en/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:45.177Z"
-  },
-  "early career": {
-    "company": "Early Career",
-    "url": "https://www.linkedin.com/jobs/early-career-program-jobs",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:46.921Z"
-  },
-  "interiors with art ltd": {
-    "company": "Interiors With Art Ltd",
-    "url": "https://www.jobaaj.com/company/interiors-with-art-ltd-careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:51.365Z"
-  },
-  "freshworks": {
-    "company": "Freshworks",
-    "url": "https://www.freshworks.com/company/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:56.617Z"
-  },
-  "alphasense": {
-    "company": "Alphasense",
-    "url": "http://job-boards.greenhouse.io/alphasense",
-    "atsType": "greenhouse",
-    "token": "alphasense",
-    "leverCompany": null,
-    "resolvedAt": "2026-07-25T09:40:57.378Z"
-  },
-  "dish": {
-    "company": "Dish",
-    "url": "https://careers.dish.com/login",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:55:49.974Z"
-  },
-  "gokwik": {
-    "company": "GoKwik",
-    "url": "https://gokwik.keka.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:55:52.305Z"
-  },
-  "friday media tech india (fmg)": {
-    "company": "Friday Media Tech India (fmg)",
-    "url": "https://fmgsuite.com/jobs",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:00.855Z"
-  },
-  "smarkworking": {
-    "company": "Smarkworking",
-    "url": "https://jobs.lever.co/smart-working-solutions",
+  "thendral booking": {
+    "company": "Thendral Booking",
+    "url": "https://jobs.lever.co/destinationknot",
     "atsType": "lever",
     "token": null,
-    "leverCompany": "smart-working-solutions",
-    "resolvedAt": "2026-07-27T06:56:02.638Z"
+    "leverCompany": "destinationknot",
+    "resolvedAt": "2026-08-06T09:49:07.387Z"
   },
-  "hackajob": {
-    "company": "hackajob",
-    "url": "https://hackajob.com/en-us/jobs",
+  "hyrespot india": {
+    "company": "Hyrespot India",
+    "url": "https://talentd.in/jobs/tags/google-careers-india",
     "atsType": null,
     "token": null,
     "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:04.359Z"
+    "resolvedAt": "2026-08-06T09:49:11.690Z"
   },
-  "scoutit": {
-    "company": "Scoutit",
-    "url": "https://www.jobaaj.com/company/scoutit-careers",
+  "instantdm": {
+    "company": "InstantDM",
+    "url": "https://instantteams.com/jobs",
     "atsType": null,
     "token": null,
     "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:06.636Z"
-  },
-  "waters corporation": {
-    "company": "Waters Corporation",
-    "url": "https://www.waters.com/nextgen/us/en/about-waters/careers.html",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:07.643Z"
-  },
-  "freecharge": {
-    "company": "Freecharge",
-    "url": "https://en.wikipedia.org/wiki/Freecharge",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:09.459Z"
-  },
-  "bugcrowd": {
-    "company": "Bugcrowd",
-    "url": "https://www.bugcrowd.com/about/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:10.469Z"
-  },
-  "nvidia ai": {
-    "company": "NVIDIA AI",
-    "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-27T06:56:12.184Z"
-  },
-  "nvidia": {
-    "company": "NVIDIA",
-    "url": "https://www.quantumjobs.us/company/nvidia",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:24:56.879Z"
-  },
-  "hire feed": {
-    "company": "Hire Feed",
-    "url": "https://jobs.thefeed.com",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:24:59.473Z"
-  },
-  "freehand": {
-    "company": "Freehand",
-    "url": "https://jobs.ashbyhq.com/freehand",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:00.913Z"
-  },
-  "apollo": {
-    "company": "Apollo",
-    "url": "http://www.apollooptical.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:02.827Z"
-  },
-  "weave": {
-    "company": "Weave",
-    "url": "https://www.getclera.com/jobs/companies/weave",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:07.073Z"
-  },
-  "mesh": {
-    "company": "Mesh",
-    "url": "https://job-boards.greenhouse.io/mesh",
-    "atsType": "greenhouse",
-    "token": "mesh",
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:09.787Z"
-  },
-  "cencora": {
-    "company": "Cencora",
-    "url": "https://careers.cencora.com/us/en",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:11.584Z"
-  },
-  "egc global services india pvt ltd": {
-    "company": "EGC Global Services India Pvt Ltd",
-    "url": "https://egcgs.theegc.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:18.776Z"
-  },
-  "meg world technologies pvt ltd": {
-    "company": "MEG WORLD TECHNOLOGIES PVT LTD",
-    "url": "https://megit.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:24.788Z"
-  },
-  "epam systems": {
-    "company": "EPAM Systems",
-    "url": "https://www.epam.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-29T06:25:26.962Z"
-  },
-  "nameless": {
-    "company": "Nameless",
-    "url": "https://hiringgo.com/company/nameless",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:52:50.891Z"
-  },
-  "infosys": {
-    "company": "Infosys",
-    "url": "https://www.infosys.com/careers/americas.html",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:52:53.934Z"
-  },
-  "mphasis": {
-    "company": "Mphasis",
-    "url": "https://www2.mphasis.com/hot-jobs.html",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:52:56.006Z"
-  },
-  "konecta india": {
-    "company": "Konecta India",
-    "url": "https://konecta.com/join-us",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:53:00.086Z"
-  },
-  "ust": {
-    "company": "UST",
-    "url": "https://www.ust.com/en/jobsearch",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:53:01.472Z"
-  },
-  "tata consultancy services": {
-    "company": "Tata Consultancy Services",
-    "url": "https://www.tcs.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:53:06.155Z"
-  },
-  "frobin technologies": {
-    "company": "Frobin Technologies",
-    "url": "https://www.roberthalf.com/us/en/jobs/all/technology",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:53:09.122Z"
-  },
-  "revalsys technologies": {
-    "company": "Revalsys Technologies",
-    "url": "https://www.revalsys.com/careers.html",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:53:10.546Z"
-  },
-  "people prime worldwide": {
-    "company": "People Prime Worldwide",
-    "url": "https://people-prime.com/activejobs",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-07-31T06:53:12.259Z"
-  },
-  "bcforward": {
-    "company": "BCforward",
-    "url": "https://careers.smartrecruiters.com/BCforward3",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:11.595Z"
-  },
-  "burgeon it services": {
-    "company": "Burgeon It Services",
-    "url": "https://www.burgeonits.com/careers/index.html",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:12.771Z"
-  },
-  "hitachi energy": {
-    "company": "Hitachi Energy",
-    "url": "https://careers.hitachi.com/search/hitachi-energy-usa-inc/jobs",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:15.533Z"
-  },
-  "ac milan academy kerala": {
-    "company": "AC Milan Academy Kerala",
-    "url": "https://www.acmilan.com/en/club/work-with-us",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:17.949Z"
-  },
-  "avlview.com": {
-    "company": "AVLView.com",
-    "url": "https://avlview.com",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:21.543Z"
-  },
-  "unique it solution": {
-    "company": "Unique It Solution",
-    "url": "https://theuniqueitsolution.com/career",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:25.237Z"
-  },
-  "deservely technologies": {
-    "company": "Deservely Technologies",
-    "url": "https://devtechnology.com/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:27.208Z"
-  },
-  "tripjack": {
-    "company": "Tripjack",
-    "url": "https://careers.trip.com",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:29.182Z"
-  },
-  "walmart": {
-    "company": "Walmart",
-    "url": "https://careers.walmart.com/us/en/home",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:35.199Z"
-  },
-  "accenture in india": {
-    "company": "Accenture in India",
-    "url": "https://www.accenture.com/in-en/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-03T06:55:36.772Z"
-  },
-  "zemoso technologies": {
-    "company": "ZeMoSo Technologies",
-    "url": "https://www.zemosolabs.com/careers/software-developer-react",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:33.561Z"
-  },
-  "the agentic loop": {
-    "company": "The Agentic Loop",
-    "url": "https://job-boards.greenhouse.io/taxbit/jobs/6111141004",
-    "atsType": "greenhouse",
-    "token": "taxbit",
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:34.529Z"
-  },
-  "rivirtual academy": {
-    "company": "RiVirtual Academy",
-    "url": "https://bebee.com/in/jobs/software-engineer-rivirtual-academy-hyderabad-telangana--t7xk-779240006",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:36.845Z"
-  },
-  "aroop kr gogoi": {
-    "company": "Aroop Kr Gogoi",
-    "url": "https://www.arup.com/en-us/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:40.085Z"
-  },
-  "rapidue technologies": {
-    "company": "Rapidue Technologies",
-    "url": "https://careers.cloud.com",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:41.619Z"
-  },
-  "codefeast enterprises": {
-    "company": "Codefeast Enterprises",
-    "url": "https://www.codefeast.in/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:42.850Z"
-  },
-  "color employer, llc": {
-    "company": "Color Employer, LLC",
-    "url": "https://startup.jobs/product-manager-group-color-employer-llc-8481968",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:45.908Z"
-  },
-  "vikram tea": {
-    "company": "Vikram Tea",
-    "url": "https://www.ambitionbox.com/jobs/vikram-tea-jobs-cmp",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:20:49.168Z"
-  },
-  "digital magic technologies private limited": {
-    "company": "Digital Magic Technologies Private Limited",
-    "url": "https://magic.dev/careers",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:21:00.840Z"
-  },
-  "husky technologies": {
-    "company": "Husky Technologies",
-    "url": "https://www.husky.co/en/careers/portal",
-    "atsType": null,
-    "token": null,
-    "leverCompany": null,
-    "resolvedAt": "2026-08-05T06:21:02.412Z"
+    "resolvedAt": "2026-08-06T09:49:15.859Z"
   }
 }

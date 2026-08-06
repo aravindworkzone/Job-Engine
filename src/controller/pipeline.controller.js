@@ -19,7 +19,8 @@ export function stage1MaxAgeMs() {
 //   STAGE1_GITHUB=off  STAGE1_PORTFOLIO=off  STAGE1_FOOTPRINT=off
 // (accepted off-values: off / false / 0 / no / disabled; anything else = on)
 const OFF_VALUES = new Set(["off", "false", "0", "no", "disabled"]);
-const onUnlessOff = (v) => !(v !== undefined && OFF_VALUES.has(String(v).trim().toLowerCase()));
+// Shared by the other controllers so every on/off knob accepts the same values.
+export const onUnlessOff = (v) => !(v !== undefined && OFF_VALUES.has(String(v).trim().toLowerCase()));
 
 export function stage1Fetchers() {
   return {

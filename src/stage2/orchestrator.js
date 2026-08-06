@@ -175,8 +175,13 @@ async function main() {
   });
 
   const total = readJobs().length;
+  const rejects = Object.entries(stats.byReason)
+    .sort((a, b) => b[1] - a[1])
+    .map(([reason, n]) => `${reason} ${n}`)
+    .join(", ");
   const line =
     `sources ${srv.ok}/${srv.attempted} ok (${srv.failed} failed) | found ${stats.input} | ` +
+    `rejected ${stats.hardRejected}${rejects ? ` (${rejects})` : ""} | ` +
     `afterHardFilter ${stats.input - stats.hardRejected} | scored ${stats.kept} | ` +
     `newlyAdded ${added} | jobs.json total ${total}`;
   console.log(`✔ Stage 2: ${line}`);
