@@ -470,5 +470,85 @@
     "token": null,
     "leverCompany": null,
     "resolvedAt": "2026-08-05T06:21:02.412Z"
+  },
+  "elsevier": {
+    "company": "Elsevier",
+    "url": "https://www.elsevier.com/about/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:24.200Z"
+  },
+  "mount talent consulting": {
+    "company": "Mount Talent Consulting",
+    "url": "https://careers.smartrecruiters.com/MountTalentConsulting2",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:26.061Z"
+  },
+  "360 technology": {
+    "company": "360 Technology",
+    "url": "https://360.technology/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:27.526Z"
+  },
+  "sophos": {
+    "company": "Sophos",
+    "url": "https://builtin.com/company/sophos/jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:28.698Z"
+  },
+  "netomi": {
+    "company": "Netomi",
+    "url": "https://jobs.lever.co/netomi",
+    "atsType": "lever",
+    "token": null,
+    "leverCompany": "netomi",
+    "resolvedAt": "2026-08-06T09:05:29.373Z"
+  },
+  "certa": {
+    "company": "Certa",
+    "url": "https://www.certa.ai/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:31.339Z"
+  },
+  "sonicwall": {
+    "company": "SonicWall",
+    "url": "https://job-boards.greenhouse.io/sonicwall",
+    "atsType": "greenhouse",
+    "token": "sonicwall",
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:33.468Z"
+  },
+  "indium software india": {
+    "company": "Indium Software India",
+    "url": "https://www.indium.tech/careers",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:36.850Z"
+  },
+  "factuon": {
+    "company": "FactuON",
+    "url": "https://www.builtincolorado.com/company/faction/jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:38.441Z"
+  },
+  "nexifyr consulting pvt ltd": {
+    "company": "Nexifyr Consulting Pvt Ltd",
+    "url": "https://nexifyr.in/jobs",
+    "atsType": null,
+    "token": null,
+    "leverCompany": null,
+    "resolvedAt": "2026-08-06T09:05:41.341Z"
   }
 }

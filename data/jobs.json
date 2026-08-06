@@ -1067,9 +1067,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:24.264Z",
+    "pushedToNotion": true
   },
   {
     "id": "747cbc41e0ad6fb5df80d7feb8e6a8b756e4e54d5dba6aa9db8980f0ad8403ca",
@@ -1083,9 +1083,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:26.092Z",
+    "pushedToNotion": true
   },
   {
     "id": "c92039f919d350b7bb533a313d03a880605eec7c128758b35b76374fc13f7cae",
@@ -1099,9 +1099,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:27.573Z",
+    "pushedToNotion": true
   },
   {
     "id": "be242de5b6589be24b8bdc785ac16c87b0156990cf1a0b993e26f00768b6cb30",
@@ -1115,9 +1115,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:28.723Z",
+    "pushedToNotion": true
   },
   {
     "id": "7f4dd210c95445ced403136e0480e8bb0a416974a169d1d0cd0b118bf3378dff",
@@ -1131,8 +1131,8 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
+    "verified": "no",
+    "verifiedAt": "2026-08-06T09:05:30.209Z",
     "pushedToNotion": false
   },
   {
@@ -1147,9 +1147,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:31.365Z",
+    "pushedToNotion": true
   },
   {
     "id": "29d46724f10be31a17430587d78cc4600cefb81d916df3b16202b7aeca99d9d8",
@@ -1163,8 +1163,8 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-29T06:24:55.786Z",
-    "verified": null,
-    "verifiedAt": null,
+    "verified": "no",
+    "verifiedAt": "2026-08-06T09:05:33.723Z",
     "pushedToNotion": false
   },
   {
@@ -1179,9 +1179,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-31T06:52:37.938Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:37.052Z",
+    "pushedToNotion": true
   },
   {
     "id": "b2dda464c0cc24c852c6887fb70dc2725d5cc0bc28c4e0130d20b320ed4f8e0c",
@@ -1195,9 +1195,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-31T06:52:37.938Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:39.364Z",
+    "pushedToNotion": true
   },
   {
     "id": "5da4aea198e1ee419eae7b3d13a9b963b639aabb2cb87da194e661c02c8ffcd8",
@@ -1211,9 +1211,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-07-31T06:52:37.938Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "manual",
+    "verifiedAt": "2026-08-06T09:05:41.370Z",
+    "pushedToNotion": true
   },
   {
     "id": "5d0ae40a8c27af8c04ec43a5a0314d7f81866b35ad6b0f6f12f3951157c7883f",
@@ -1771,9 +1771,9 @@
     "salary": null,
     "growth": null,
     "sourcedAt": "2026-08-03T06:55:09.786Z",
-    "verified": null,
-    "verifiedAt": null,
-    "pushedToNotion": false
+    "verified": "yes",
+    "verifiedAt": "2026-08-06T09:05:33.723Z",
+    "pushedToNotion": true
   },
   {
     "id": "88b272c61be42e49a156972a1e3dd127604a4cd8a48f96afc4fa36d05a2a8622",
